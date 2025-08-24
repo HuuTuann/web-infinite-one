@@ -8,7 +8,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@/components";
+} from "@/components/shadcn-ui";
 import { useRegisterForm } from "./useRegisterForm";
 import { AuthKeys } from "@/modules/auth/bases";
 
