@@ -1,1 +1,3 @@
-export * from "./views";
+import { AuthContainer } from "./views";
+
+export default AuthContainer;
