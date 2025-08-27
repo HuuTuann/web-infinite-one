@@ -1,10 +1,10 @@
-import { axiois } from "@/lib";
+import { axios } from "@/lib";
 import { LoginPayload } from "./useLogin/useLogin.type";
 
 const BASE_PATH = "/auth";
 
 const login = (payload: LoginPayload) => {
-  return axiois.post(`${BASE_PATH}/login`, payload);
+  return axios.post(`${BASE_PATH}/login`, payload);
 };
 
 const AuthApis = {
