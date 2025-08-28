@@ -90,4 +90,4 @@ axiosInstance.interceptors.response.use(
   },
 );
 
-export { axios };
+export { axiosInstance };
