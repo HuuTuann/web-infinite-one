@@ -1,5 +1,6 @@
 "use client";
 
+import { Toastify } from "@/components/io-ui";
 import { useAuthStore } from "@/stores";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -14,7 +15,12 @@ export const RequireAuth = ({ children, redirectTo = "/auth" }: Props) => {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
   useEffect(() => {
-    if (!isAuthenticated) router.replace(redirectTo);
+    if (!isAuthenticated) {
+      setTimeout(() => {
+        router.replace(redirectTo);
+      }, 300);
+      Toastify.Error("Unauthorized access");
+    }
   }, [isAuthenticated, redirectTo, router]);
 
   if (!isAuthenticated) return null;

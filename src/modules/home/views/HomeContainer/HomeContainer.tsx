@@ -1,9 +1,11 @@
 "use client";
 
 import { Button, HoverBackground, TypingText } from "@/components/re-ui";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function HomeContainer() {
+  const router = useRouter();
+
   return (
     <div className="relative h-screen w-screen overflow-hidden">
       <HoverBackground
@@ -45,7 +47,11 @@ export function HomeContainer() {
             <br />I care about DX, performance, and design consistency.
           </p>
           <div className="animate-fade-in flex flex-row justify-center gap-4">
-            <Button size="lg" className="w-64">
+            <Button
+              size="lg"
+              className="w-64"
+              onClick={() => router.push("/dashboard")}
+            >
               View Projects
             </Button>
             <Button size="lg" className="w-64">
