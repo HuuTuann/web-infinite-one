@@ -3,8 +3,11 @@ import { LoginFormValues, LoginHelpers } from "./Login.helpers";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLogin } from "@/modules/auth/queries";
 import { Toastify } from "@/components/io-ui";
+import { useAuthStore } from "@/stores";
 
 export const useLoginForm = () => {
+  const onAuthLogin = useAuthStore((s) => s.login);
+  
   const form = useForm<LoginFormValues>({
     defaultValues: LoginHelpers.initialValues,
     resolver: zodResolver(LoginHelpers.schema),
@@ -15,6 +18,7 @@ export const useLoginForm = () => {
   const { isPending, onLogin } = useLogin({
     onSuccess: () => {
       Toastify.Success("Login successful");
+      onAuthLogin();
     },
     onError: () => {
       Toastify.Error("Login failed");
