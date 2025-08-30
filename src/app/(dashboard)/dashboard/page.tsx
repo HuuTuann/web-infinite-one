@@ -1,4 +1,4 @@
-import { RequireAuth } from "@/modules/auth/components";
+import { RequireAuth } from "@/components";
 
 export default function DashboardPage() {
   return (
