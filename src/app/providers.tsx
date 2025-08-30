@@ -3,7 +3,7 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { queryClient } from "@/lib";
-import { Toaster } from "@/components/shadcn-ui";
+import { Toaster } from "@/components/ui/shadcn-ui";
 
 export default function Providers({
   children,
