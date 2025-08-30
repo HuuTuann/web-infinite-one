@@ -1,6 +1,6 @@
 "use client";
 
-import { Toastify } from "@/components/io-ui";
+import { Toastify } from "@/components/ui/io-ui";
 import { useHydration } from "@/hooks";
 import { useAuthStore } from "@/stores";
 import { useRouter } from "next/navigation";

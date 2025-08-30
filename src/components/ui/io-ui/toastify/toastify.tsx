@@ -1,6 +1,6 @@
 import { toast as toastSonner } from "sonner";
 import { ToastVariants } from "./toastify.helpers";
-import { Alert } from "@/components/re-ui";
+import { Alert } from "@/components/ui/re-ui";
 import {
   RiCheckboxCircleFill,
   RiErrorWarningFill,
