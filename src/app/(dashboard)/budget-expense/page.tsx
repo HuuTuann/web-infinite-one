@@ -1,8 +1,6 @@
 import { RequireAuth } from "@/components";
 
-export default async function DashboardPage() {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-
+export default async function BudgetExpensePage() {
   return (
     <RequireAuth>
       <div>Dashboard</div>

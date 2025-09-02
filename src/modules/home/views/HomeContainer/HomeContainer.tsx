@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
+import { PATHS } from "@/lib";
 import { Button, HoverBackground, TypingText } from "@/re-ui";
 
 export function HomeContainer() {
@@ -51,7 +52,7 @@ export function HomeContainer() {
             <Button
               size="lg"
               className="w-64"
-              onClick={() => router.push("/dashboard")}
+              onClick={() => router.push(PATHS.budgetExpenseDashboard)}
             >
               View Projects
             </Button>

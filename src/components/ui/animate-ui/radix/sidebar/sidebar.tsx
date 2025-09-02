@@ -788,52 +788,52 @@ function SidebarMenuSubButton({
   );
 }
 
-export {
-  Sidebar,
-  SidebarContent,
-  type SidebarContentProps,
-  SidebarFooter,
-  type SidebarFooterProps,
-  SidebarGroup,
-  SidebarGroupAction,
-  type SidebarGroupActionProps,
-  SidebarGroupContent,
-  type SidebarGroupContentProps,
-  SidebarGroupLabel,
-  type SidebarGroupLabelProps,
-  type SidebarGroupProps,
-  SidebarHeader,
-  type SidebarHeaderProps,
-  SidebarInput,
-  type SidebarInputProps,
-  SidebarInset,
-  type SidebarInsetProps,
-  SidebarMenu,
-  SidebarMenuAction,
-  type SidebarMenuActionProps,
-  SidebarMenuBadge,
-  type SidebarMenuBadgeProps,
-  SidebarMenuButton,
-  type SidebarMenuButtonProps,
-  SidebarMenuItem,
-  type SidebarMenuItemProps,
-  type SidebarMenuProps,
-  SidebarMenuSkeleton,
-  type SidebarMenuSkeletonProps,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  type SidebarMenuSubButtonProps,
-  SidebarMenuSubItem,
-  type SidebarMenuSubItemProps,
-  type SidebarMenuSubProps,
-  type SidebarProps,
-  SidebarProvider,
-  type SidebarProviderProps,
-  SidebarRail,
-  type SidebarRailProps,
-  SidebarSeparator,
-  type SidebarSeparatorProps,
-  SidebarTrigger,
-  type SidebarTriggerProps,
-  useSidebar,
+Sidebar.Content = SidebarContent;
+Sidebar.Footer = SidebarFooter;
+Sidebar.Group = SidebarGroup;
+Sidebar.GroupAction = SidebarGroupAction;
+Sidebar.GroupContent = SidebarGroupContent;
+Sidebar.GroupLabel = SidebarGroupLabel;
+Sidebar.Header = SidebarHeader;
+Sidebar.Input = SidebarInput;
+Sidebar.Inset = SidebarInset;
+Sidebar.Menu = SidebarMenu;
+Sidebar.MenuAction = SidebarMenuAction;
+Sidebar.MenuBadge = SidebarMenuBadge;
+Sidebar.MenuButton = SidebarMenuButton;
+Sidebar.MenuItem = SidebarMenuItem;
+Sidebar.MenuSkeleton = SidebarMenuSkeleton;
+Sidebar.MenuSub = SidebarMenuSub;
+Sidebar.MenuSubButton = SidebarMenuSubButton;
+Sidebar.MenuSubItem = SidebarMenuSubItem;
+Sidebar.Separator = SidebarSeparator;
+Sidebar.Trigger = SidebarTrigger;
+Sidebar.Provider = SidebarProvider;
+Sidebar.Rail = SidebarRail;
+
+export { Sidebar, useSidebar };
+export type {
+  SidebarContentProps,
+  SidebarFooterProps,
+  SidebarGroupActionProps,
+  SidebarGroupContentProps,
+  SidebarGroupLabelProps,
+  SidebarGroupProps,
+  SidebarHeaderProps,
+  SidebarInputProps,
+  SidebarInsetProps,
+  SidebarMenuActionProps,
+  SidebarMenuBadgeProps,
+  SidebarMenuButtonProps,
+  SidebarMenuItemProps,
+  SidebarMenuProps,
+  SidebarMenuSkeletonProps,
+  SidebarMenuSubButtonProps,
+  SidebarMenuSubItemProps,
+  SidebarMenuSubProps,
+  SidebarProps,
+  SidebarProviderProps,
+  SidebarRailProps,
+  SidebarSeparatorProps,
+  SidebarTriggerProps,
 };
