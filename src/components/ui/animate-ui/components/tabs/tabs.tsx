@@ -1,11 +1,14 @@
 "use client";
 
-import * as React from "react";
+import { type HTMLMotionProps, motion, type Transition } from "motion/react";
 import { Tabs as TabsPrimitive } from "radix-ui";
-import { type HTMLMotionProps, type Transition, motion } from "motion/react";
+import * as React from "react";
 
-import { cn } from "@/lib/utils";
-import { MotionHighlight, MotionHighlightItem } from "../motion-highlight";
+import {
+  MotionHighlight,
+  MotionHighlightItem,
+} from "@/components/ui/animate-ui";
+import { cn } from "@/lib";
 
 type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;
 
@@ -40,13 +43,13 @@ function TabsList({
   React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement);
 
   const [activeValue, setActiveValue] = React.useState<string | undefined>(
-    undefined,
+    undefined
   );
 
   const getActiveValue = React.useCallback(() => {
     if (!localRef.current) return;
     const activeTab = localRef.current.querySelector<HTMLElement>(
-      '[data-state="active"]',
+      '[data-state="active"]'
     );
     if (!activeTab) return;
     setActiveValue(activeTab.getAttribute("data-value") ?? undefined);
@@ -82,7 +85,7 @@ function TabsList({
         data-slot="tabs-list"
         className={cn(
           "bg-muted text-muted-foreground inline-flex h-10 w-fit items-center justify-center rounded-lg p-[4px]",
-          className,
+          className
         )}
         {...props}
       >
@@ -101,7 +104,7 @@ function TabsTrigger({ className, value, ...props }: TabsTriggerProps) {
         data-slot="tabs-trigger"
         className={cn(
           "ring-offset-background focus-visible:ring-ring data-[state=active]:text-foreground z-[1] inline-flex size-full cursor-pointer items-center justify-center rounded-sm px-2 py-1 text-sm font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
-          className,
+          className
         )}
         value={value}
         {...props}
@@ -199,13 +202,13 @@ function TabsContents({
 
 export {
   Tabs,
-  TabsList,
-  TabsTrigger,
   TabsContent,
-  TabsContents,
-  type TabsProps,
-  type TabsListProps,
-  type TabsTriggerProps,
   type TabsContentProps,
+  TabsContents,
   type TabsContentsProps,
+  TabsList,
+  type TabsListProps,
+  type TabsProps,
+  TabsTrigger,
+  type TabsTriggerProps,
 };

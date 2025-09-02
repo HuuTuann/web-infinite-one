@@ -7,6 +7,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/animate-ui";
+
 import { AuthTabs, tabOptions } from "./AuthContainer.helpers";
 import AuthComponents from "./components";
 

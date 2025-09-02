@@ -1,4 +1,5 @@
 import { axiosInstance } from "@/lib";
+
 import { LoginPayload } from "./useLogin/useLogin.type";
 
 const BASE_PATH = "/auth";

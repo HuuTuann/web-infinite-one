@@ -1,6 +1,7 @@
-import { useForm } from "react-hook-form";
-import { RegisterFormValues, RegisterHelpers } from "./Register.helpers";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+import { RegisterFormValues, RegisterHelpers } from "./Register.helpers";
 
 export const useRegisterForm = () => {
   const form = useForm<RegisterFormValues>({

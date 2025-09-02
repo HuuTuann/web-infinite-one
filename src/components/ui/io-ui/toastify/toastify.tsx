@@ -1,12 +1,14 @@
-import { toast as toastSonner } from "sonner";
-import { ToastVariants } from "./toastify.helpers";
-import { Alert } from "@/components/ui/re-ui";
 import {
   RiCheckboxCircleFill,
   RiErrorWarningFill,
   RiNotificationFill,
   RiSpamFill,
 } from "@remixicon/react";
+import { toast as toastSonner } from "sonner";
+
+import { Alert } from "@/components/ui/re-ui";
+
+import { ToastVariants } from "./toastify.helpers";
 
 type ToastifyOptions = {
   title: string;
@@ -25,7 +27,7 @@ const toast = (options: ToastifyOptions) => {
         <Alert.Title>{title}</Alert.Title>
       </Alert>
     ),
-    { duration },
+    { duration }
   );
 };
 

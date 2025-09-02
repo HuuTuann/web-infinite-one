@@ -1,3 +1,3 @@
-export * from "./motion-highlight";
-export * from "./tabs";
-export * from "./loading";
+export * from "./components";
+export * from "./effects";
+export * from "./radix";

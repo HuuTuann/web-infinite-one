@@ -1,7 +1,8 @@
 "use client";
 
-import { Button, HoverBackground, TypingText } from "@/components/ui/re-ui";
 import { useRouter } from "next/navigation";
+
+import { Button, HoverBackground, TypingText } from "@/components/ui/re-ui";
 
 export function HomeContainer() {
   const router = useRouter();

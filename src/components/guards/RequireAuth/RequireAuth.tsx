@@ -1,10 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 import { Loading } from "@/components/ui/animate-ui";
 import { Toastify } from "@/components/ui/io-ui";
 import { useAuthStore } from "@/stores";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 type Props = {
   children: React.ReactNode;

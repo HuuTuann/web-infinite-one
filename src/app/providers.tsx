@@ -2,10 +2,11 @@
 
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { queryClient } from "@/lib";
+
+import { Loading } from "@/components/ui/animate-ui";
 import { Toaster } from "@/components/ui/shadcn-ui";
 import { useHydration } from "@/hooks";
-import { Loading } from "@/components/ui/animate-ui";
+import { queryClient } from "@/lib";
 
 export default function Providers({
   children,

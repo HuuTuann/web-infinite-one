@@ -9,8 +9,9 @@ import {
   FormMessage,
   Input,
 } from "@/components/ui/shadcn-ui";
-import { useRegisterForm } from "./useRegisterForm";
 import { AuthKeys } from "@/modules/auth/bases";
+
+import { useRegisterForm } from "./useRegisterForm";
 
 export const Register = () => {
   const { form, onSubmit } = useRegisterForm();

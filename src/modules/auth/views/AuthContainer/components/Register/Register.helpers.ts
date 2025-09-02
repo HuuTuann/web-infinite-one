@@ -1,5 +1,7 @@
-import { AuthKeys } from "@/modules/auth/bases";
 import z from "zod";
+
+import { AuthKeys } from "@/modules/auth/bases";
+
 import { LoginHelpers } from "../Login/Login.helpers";
 
 const schema = z
@@ -37,4 +39,4 @@ const RegisterHelpers = {
   initialValues,
 };
 
-export { RegisterHelpers, type RegisterFormValues };
+export { type RegisterFormValues,RegisterHelpers };

@@ -1,8 +1,9 @@
-import * as React from "react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/re-ui";
 import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
+import * as React from "react";
+
+import { Button } from "@/components/ui/re-ui";
+import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
   "flex items-stretch w-full gap-2 group-[.toaster]:w-(--width)",
@@ -195,7 +196,7 @@ const alertVariants = cva(
       appearance: "solid",
       size: "md",
     },
-  },
+  }
 );
 
 interface AlertProps
@@ -226,7 +227,7 @@ function Alert({
       role="alert"
       className={cn(
         alertVariants({ variant, size, icon, appearance }),
-        className,
+        className
       )}
       {...props}
     >
@@ -303,7 +304,7 @@ function AlertContent({
       data-slot="alert-content"
       className={cn(
         "space-y-2 [&_[data-slot=alert-title]]:font-semibold",
-        className,
+        className
       )}
       {...props}
     />
