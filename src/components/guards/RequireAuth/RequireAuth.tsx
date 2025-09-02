@@ -1,10 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-import { Loading } from "@/components/ui/animate-ui";
-import { Toastify } from "@/components/ui/io-ui";
+import { Loading } from "@/animate-ui";
+import { Toastify } from "@/io-ui";
 import { useAuthStore } from "@/stores";
 
 type Props = {

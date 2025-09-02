@@ -1,9 +1,9 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
+import eslintConfigPrettier from "eslint-config-prettier";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import unusedImports from "eslint-plugin-unused-imports";
-import eslintConfigPrettier from "eslint-config-prettier";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,9 +35,36 @@ const eslintConfig = [
       "sort-imports": "off",
       "import/order": "off",
       "no-unused-vars": "off",
+      "no-duplicate-imports": "error",
 
-      // sort imports/exports
-      "simple-import-sort/imports": "error",
+      // sort imports/exports with sensible groups
+      "simple-import-sort/imports": [
+        "error",
+        {
+          groups: [
+            // Side effect imports (e.g. polyfills, CSS)
+            ["^\\u0000"],
+
+            // React and Next first
+            ["^react$", "^next", "^next/(.*)"],
+
+            // Packages. Things that start with a letter (or digit or underscore), or @ followed by a letter
+            ["^@?\\w"],
+
+            // Internal aliases (e.g. @/ or src/)
+            ["^@/", "^src/"],
+
+            // Parent imports. Put `..` last.
+            ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+
+            // Other relative imports. Put same-folder and `.` last.
+            ["^\\.(?!/?$)", "^\\./?$"],
+
+            // Style imports
+            ["^.+\\.(css|scss|sass|less)$"],
+          ],
+        },
+      ],
       "simple-import-sort/exports": "error",
 
       // remove unused imports and flag unused vars (allow _ prefixed)

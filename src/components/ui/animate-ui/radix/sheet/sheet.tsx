@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
 import {
@@ -9,7 +11,6 @@ import {
   type Transition,
 } from "motion/react";
 import { Dialog as SheetPrimitive } from "radix-ui";
-import * as React from "react";
 
 import { cn } from "@/lib";
 

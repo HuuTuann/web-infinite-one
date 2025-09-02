@@ -1,3 +1,4 @@
+import { AuthKeys } from "@/modules/auth/bases";
 import {
   Button,
   Card,
@@ -8,8 +9,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@/components/ui/shadcn-ui";
-import { AuthKeys } from "@/modules/auth/bases";
+} from "@/shadcn-ui";
 
 import { useLoginForm } from "./useLoginForm";
 

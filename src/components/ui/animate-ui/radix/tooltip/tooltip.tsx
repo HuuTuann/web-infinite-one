@@ -1,10 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, type Transition } from "motion/react";
-import { Tooltip as TooltipPrimitive } from "radix-ui";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { AnimatePresence, motion, type Transition } from "motion/react";
+import { Tooltip as TooltipPrimitive } from "radix-ui";
+
+import { cn } from "@/lib";
 
 type TooltipContextType = {
   isOpen: boolean;

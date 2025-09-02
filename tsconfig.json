@@ -19,6 +19,14 @@
       }
     ],
     "paths": {
+      "@/shadcn-ui": ["./src/components/ui/shadcn-ui"],
+      "@/re-ui": ["./src/components/ui/re-ui"],
+      "@/io-ui": ["./src/components/ui/io-ui"],
+      "@/animate-ui": ["./src/components/ui/animate-ui"],
+      "@/stores": ["./src/stores"],
+      "@/hooks": ["./src/hooks"],
+      "@/components": ["./src/components"],
+      "@/lib": ["./src/lib"],
       "@/*": ["./src/*"]
     }
   },

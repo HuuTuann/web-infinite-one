@@ -1,13 +1,11 @@
 "use client";
 
-import { type HTMLMotionProps, motion, type Transition } from "motion/react";
-import { Tabs as TabsPrimitive } from "radix-ui";
 import * as React from "react";
 
-import {
-  MotionHighlight,
-  MotionHighlightItem,
-} from "@/components/ui/animate-ui";
+import { type HTMLMotionProps, motion, type Transition } from "motion/react";
+import { Tabs as TabsPrimitive } from "radix-ui";
+
+import { MotionHighlight, MotionHighlightItem } from "@/animate-ui";
 import { cn } from "@/lib";
 
 type TabsProps = React.ComponentProps<typeof TabsPrimitive.Root>;

@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useEffect, useRef, useState } from "react";
+
 import {
   motion,
   MotionProps,
@@ -7,9 +9,8 @@ import {
   UseInViewOptions,
   Variants,
 } from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 
 type AnimationVariant =
   | "fadeIn"
@@ -178,7 +179,7 @@ export function TypingText({
             animate="blinking"
             className={cn(
               "text-foreground ms-1 inline-block w-px font-normal select-none",
-              cursorClassName,
+              cursorClassName
             )}
           >
             {cursor}

@@ -3,10 +3,10 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import { Loading } from "@/components/ui/animate-ui";
-import { Toaster } from "@/components/ui/shadcn-ui";
+import { Loading } from "@/animate-ui";
 import { useHydration } from "@/hooks";
 import { queryClient } from "@/lib";
+import { Toaster } from "@/shadcn-ui";
 
 export default function Providers({
   children,

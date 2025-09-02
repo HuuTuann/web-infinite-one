@@ -6,7 +6,7 @@ import {
 } from "@remixicon/react";
 import { toast as toastSonner } from "sonner";
 
-import { Alert } from "@/components/ui/re-ui";
+import { Alert } from "@/re-ui";
 
 import { ToastVariants } from "./toastify.helpers";
 

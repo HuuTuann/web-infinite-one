@@ -1,14 +1,15 @@
 "use client";
 
+import * as React from "react";
+
 import {
   HTMLMotionProps,
   motion,
   useMotionValue,
   useSpring,
 } from "motion/react";
-import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 
 type HoverBackgroundProps = HTMLMotionProps<"div"> & {
   objectCount?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
@@ -79,7 +80,7 @@ function HoverBackground({
           baseRotation: Math.random() * 360, // Random starting rotation offset
         };
       }),
-    [objectCount, objects],
+    [objectCount, objects]
   );
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -114,7 +115,7 @@ function HoverBackground({
       className={cn(
         "relative size-full overflow-hidden",
         background,
-        className,
+        className
       )}
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
@@ -150,7 +151,7 @@ function HoverBackground({
           className={cn(
             "absolute border border-white/10 backdrop-blur-sm",
             obj.color,
-            obj.shape === "circle" ? "rounded-full" : "rotate-45 rounded-lg",
+            obj.shape === "circle" ? "rounded-full" : "rotate-45 rounded-lg"
           )}
           style={{
             left: `${obj.x}%`,

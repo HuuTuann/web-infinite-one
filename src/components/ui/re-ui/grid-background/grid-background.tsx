@@ -1,9 +1,10 @@
 "use client";
 
-import { HTMLMotionProps, motion } from "motion/react";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { HTMLMotionProps, motion } from "motion/react";
+
+import { cn } from "@/lib";
 
 type GridSize =
   | "4:4"
@@ -95,7 +96,7 @@ function GridBackground({
           duration: speed + Math.random() * 2,
         };
       }),
-    [count, beamColors, speed, cols, rows],
+    [count, beamColors, speed, cols, rows]
   );
 
   const gridStyle = {
@@ -108,7 +109,7 @@ function GridBackground({
       className={cn(
         "relative size-full overflow-hidden",
         background,
-        className,
+        className
       )}
       style={gridStyle}
       {...props}
@@ -154,7 +155,7 @@ function GridBackground({
               "absolute z-20 rounded-full backdrop-blur-sm",
               beam.color,
               beam.direction === "horizontal" ? "h-0.5 w-6" : "h-6 w-0.5",
-              shadow,
+              shadow
             )}
             style={{
               ...(beam.direction === "horizontal"

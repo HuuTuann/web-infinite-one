@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { Toastify } from "@/components/ui/io-ui";
+import { Toastify } from "@/io-ui";
 import { useLogin } from "@/modules/auth/queries";
 import { useAuthStore } from "@/stores";
 

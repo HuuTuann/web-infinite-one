@@ -1,10 +1,11 @@
 "use client";
 
+import * as React from "react";
+
 import { cva, VariantProps } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react";
 import { type Transition } from "motion/react";
 import { Slot } from "radix-ui";
-import * as React from "react";
 
 import {
   MotionHighlight,
@@ -14,16 +15,14 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/components/ui/animate-ui";
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/animate-ui/radix/tooltip/tooltip";
-import { Button, Input, Separator, Skeleton } from "@/components/ui/shadcn-ui";
-import { useIsMobile } from "@/hooks/use-mobile";
+} from "@/animate-ui";
+import { useIsMobile } from "@/hooks";
 import { cn } from "@/lib";
+import { Button, Input, Separator, Skeleton } from "@/shadcn-ui";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

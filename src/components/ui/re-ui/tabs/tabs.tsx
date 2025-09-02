@@ -1,10 +1,11 @@
 "use client";
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { Tabs as TabsPrimitive } from "radix-ui";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
+import { Tabs as TabsPrimitive } from "radix-ui";
+
+import { cn } from "@/lib";
 
 // Variants for TabsList
 const tabsListVariants = cva("flex items-center shrink-0", {
@@ -117,7 +118,7 @@ const tabsTriggerVariants = cva(
       variant: "default",
       size: "md",
     },
-  },
+  }
 );
 
 // Variants for TabsContent
@@ -132,7 +133,7 @@ const tabsContentVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  },
+  }
 );
 
 // Context

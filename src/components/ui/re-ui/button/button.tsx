@@ -1,9 +1,10 @@
+import * as React from "react";
+
 import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronDown, LucideIcon } from "lucide-react";
 import { Slot as SlotPrimitive } from "radix-ui";
-import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 
 const buttonVariants = cva(
   "cursor-pointer group whitespace-nowrap focus-visible:outline-hidden inline-flex items-center justify-center has-data-[arrow=true]:justify-between whitespace-nowrap text-sm font-medium ring-offset-background transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-60 [&_svg]:shrink-0",
@@ -367,7 +368,7 @@ const buttonVariants = cva(
       shape: "default",
       appearance: "default",
     },
-  },
+  }
 );
 
 function Button({
@@ -406,7 +407,7 @@ function Button({
           underline,
           className,
         }),
-        asChild && props.disabled && "pointer-events-none opacity-50",
+        asChild && props.disabled && "pointer-events-none opacity-50"
       )}
       {...(selected && { "data-state": "open" })}
       {...props}

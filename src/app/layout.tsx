@@ -1,12 +1,12 @@
-import "./globals.css";
-
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Suspense } from "react";
 
-import { Loading } from "@/components/ui/animate-ui";
+import { Loading } from "@/animate-ui";
 
 import Providers from "./providers";
+
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
