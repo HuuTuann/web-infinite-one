@@ -32,7 +32,7 @@ import { useIsMobile } from "@/hooks";
 import { isEmpty, PathKey, PATHS } from "@/lib";
 import { Avatar, Breadcrumb, Separator } from "@/shadcn-ui";
 
-import SidebarHelpers, { SidebarMenu } from "./Sidebar.helpers";
+import SidebarHelpers, { SidebarMenu as ISidebarMenu } from "./Sidebar.helpers";
 
 const DATA = {
   user: {
@@ -167,7 +167,7 @@ const DATA = {
 };
 
 type SidebarMenuProps = {
-  sidebarMenus: SidebarMenu[];
+  sidebarMenus: ISidebarMenu[];
 };
 function SidebarMenu({ sidebarMenus }: SidebarMenuProps) {
   return (
