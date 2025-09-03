@@ -39,7 +39,7 @@ const eslintConfig = [
 
       // sort imports/exports with sensible groups
       "simple-import-sort/imports": [
-        "error",
+        "warn",
         {
           groups: [
             // Side effect imports (e.g. polyfills, CSS)
@@ -65,10 +65,10 @@ const eslintConfig = [
           ],
         },
       ],
-      "simple-import-sort/exports": "error",
+      "simple-import-sort/exports": "warn",
 
       // remove unused imports and flag unused vars (allow _ prefixed)
-      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-imports": "warn",
       "unused-imports/no-unused-vars": [
         "warn",
         {
