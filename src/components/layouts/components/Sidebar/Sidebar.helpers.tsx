@@ -44,7 +44,7 @@ const sidebarGroups: SidebarGroup[] = [
   },
 ];
 
-const getSidebarGroupsActive = (pathname: PathKey) => {
+const getSidebarGroupsActive = (pathname: PathKey): SidebarGroup[] => {
   return sidebarGroups.map((group) => {
     const { menus } = group;
 
