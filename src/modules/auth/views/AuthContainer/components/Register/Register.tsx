@@ -14,7 +14,7 @@ import {
 import { useRegisterForm } from "./useRegisterForm";
 
 export const Register = () => {
-  const { form, onSubmit } = useRegisterForm();
+  const { form, isLoadingRegister, onSubmit } = useRegisterForm();
   const { control } = form;
 
   return (
@@ -28,6 +28,19 @@ export const Register = () => {
       <Card.Content>
         <Form {...form}>
           <form noValidate onSubmit={onSubmit} className="space-y-6">
+            <FormField
+              control={control}
+              name={AuthKeys.NAME}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={control}
               name={AuthKeys.EMAIL}
@@ -67,7 +80,11 @@ export const Register = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
+            <Button
+              type="submit"
+              className="w-full"
+              isLoading={isLoadingRegister}
+            >
               Register
             </Button>
           </form>

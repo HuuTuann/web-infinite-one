@@ -1,15 +1,18 @@
+import { useRouter } from "next/navigation";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { Toastify } from "@/io-ui";
+import { PATHS } from "@/lib";
 import { useLogin } from "@/modules/auth/queries";
 import { useAuthStore } from "@/stores";
 
 import { LoginFormValues, LoginHelpers } from "./Login.helpers";
 
 export const useLoginForm = () => {
+  const router = useRouter();
   const onAuthLogin = useAuthStore((s) => s.login);
-
   const form = useForm<LoginFormValues>({
     defaultValues: LoginHelpers.initialValues,
     resolver: zodResolver(LoginHelpers.schema),
@@ -21,6 +24,7 @@ export const useLoginForm = () => {
     onSuccess: () => {
       Toastify.Success("Login successful");
       onAuthLogin();
+      router.push(`${PATHS.budgetExpenseDashboard}`);
     },
     onError: () => {
       Toastify.Error("Login failed");

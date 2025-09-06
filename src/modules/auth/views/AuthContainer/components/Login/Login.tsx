@@ -14,7 +14,7 @@ import {
 import { useLoginForm } from "./useLoginForm";
 
 export const Login = () => {
-  const { form, onSubmit } = useLoginForm();
+  const { form, isLoadingLogin, onSubmit } = useLoginForm();
   const { control } = form;
 
   return (
@@ -54,7 +54,7 @@ export const Login = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" isLoading={isLoadingLogin}>
               Login
             </Button>
           </form>

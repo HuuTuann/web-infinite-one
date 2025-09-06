@@ -1,14 +1,31 @@
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { LogOut } from "lucide-react";
 
 import { DropdownMenu } from "@/animate-ui";
+import { Toastify } from "@/io-ui";
+import { PATHS } from "@/lib";
+import { useLogout } from "@/modules/auth/queries";
 import { Avatar } from "@/shadcn-ui";
+import { useAuthStore } from "@/stores";
 
 import { HeaderHelpers } from "./Header.helpers";
 
 export const Header = () => {
+  const router = useRouter();
   const pathname = usePathname();
+
+  const onAuthLogout = useAuthStore((s) => s.logout);
+
+  const { onLogout } = useLogout({
+    onSuccess: () => {
+      onAuthLogout();
+      router.push(PATHS.root);
+    },
+    onError: () => {
+      Toastify.Error("Logout failed");
+    },
+  });
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between gap-2 border-b p-4">
@@ -41,7 +58,7 @@ export const Header = () => {
           </DropdownMenu.Label>
           <DropdownMenu.Separator />
 
-          <DropdownMenu.Item>
+          <DropdownMenu.Item onClick={() => onLogout()}>
             <LogOut />
             Log out
           </DropdownMenu.Item>
