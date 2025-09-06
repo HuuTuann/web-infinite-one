@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import {
   Tabs,
   TabsContent,
@@ -7,11 +10,22 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/animate-ui";
+import { PATHS } from "@/lib";
+import { useAuthStore } from "@/stores";
 
 import { AuthTabs, tabOptions } from "./AuthContainer.helpers";
 import AuthComponents from "./components";
 
 export const AuthContainer = () => {
+  const router = useRouter();
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push(PATHS.root);
+    }
+  }, [isAuthenticated, router]);
+
   return (
     <div className="flex min-h-screen w-full items-center justify-center">
       <Tabs defaultValue={AuthTabs.LOGIN} className="bg-muted w-md rounded-lg">
