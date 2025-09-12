@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import { usePathname } from "next/navigation";
+import React, { useCallback, useMemo } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import { ChevronRight } from "lucide-react";
 
@@ -14,6 +14,14 @@ type SidebarMenuProps = {
   sidebarMenus: ISidebarMenu[];
 };
 function SidebarMenu({ sidebarMenus }: SidebarMenuProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const onNavigate = useCallback(
+    (url: string) => pathname !== url && router.push(url),
+    [router, pathname]
+  );
+
   return (
     <AnimateUISidebar.Menu>
       {sidebarMenus.map(
@@ -47,10 +55,9 @@ function SidebarMenu({ sidebarMenus }: SidebarMenuProps) {
                           <AnimateUISidebar.MenuSubButton
                             asChild
                             isActive={isActive}
+                            className="cursor-pointer"
                           >
-                            <a href={url}>
-                              <span>{title}</span>
-                            </a>
+                            <p onClick={() => onNavigate(url)}>{title}</p>
                           </AnimateUISidebar.MenuSubButton>
                         </AnimateUISidebar.MenuSubItem>
                       ))}
@@ -64,10 +71,10 @@ function SidebarMenu({ sidebarMenus }: SidebarMenuProps) {
             return (
               <AnimateUISidebar.MenuItem key={index}>
                 <AnimateUISidebar.MenuButton asChild isActive={isActive}>
-                  <a href={url}>
+                  <p className="cursor-pointer">
                     <IconComponent />
-                    <span>{title}</span>
-                  </a>
+                    {title}
+                  </p>
                 </AnimateUISidebar.MenuButton>
               </AnimateUISidebar.MenuItem>
             );

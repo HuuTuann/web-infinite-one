@@ -36,7 +36,10 @@ const sidebarGroups: SidebarGroup[] = [
           {
             title: "Dashboard",
             url: PATHS.budgetExpenseDashboard,
-            isActive: true,
+          },
+          {
+            title: "Wallet",
+            url: PATHS.budgetExpenseWallet,
           },
         ],
       },
@@ -57,11 +60,12 @@ const getSidebarGroupsActive = (pathname: PathKey): SidebarGroup[] => {
         return {
           ...menu,
           isActive: url === pathname && isEmptyItems,
-          ...(isEmptyItems && {
+          ...(!isEmptyItems && {
             items: items?.map((item) => {
+              const { url } = item;
               return {
                 ...item,
-                isActive: item.url === pathname,
+                isActive: url === pathname,
               };
             }),
           }),

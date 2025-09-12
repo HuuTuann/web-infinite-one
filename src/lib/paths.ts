@@ -6,6 +6,7 @@ export const PATHS = {
   auth: "/auth",
   budgetExpense: PREFIX.budgetExpense,
   budgetExpenseDashboard: `${PREFIX.budgetExpense}/dashboard`,
+  budgetExpenseWallet: `${PREFIX.budgetExpense}/wallet`,
 } as const;
 
 export type PathKey = keyof typeof PATHS;
