@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { PATHS } from "@/lib";
+import { cn, PATHS } from "@/lib";
 import { Button, HoverBackground, TypingText } from "@/re-ui";
 
 export function HomeContainer() {
@@ -38,11 +38,16 @@ export function HomeContainer() {
           />
           <p className="text-center text-lg font-semibold text-slate-400">
             Full-stack developer focusing on{" "}
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-xl font-bold text-transparent">
+            <span className={commonDescriptionClassName}>
               React, Next.js, NestJS
             </span>
             , and{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-xl font-bold text-transparent">
+            <span
+              className={cn(
+                commonDescriptionClassName,
+                "from-cyan-400 to-purple-400"
+              )}
+            >
               PostgreSQL
             </span>
             .
@@ -51,12 +56,18 @@ export function HomeContainer() {
           <div className="animate-fade-in flex flex-row justify-center gap-4">
             <Button
               size="lg"
-              className="w-64"
+              className={commonButtonClassName}
               onClick={() => router.push(PATHS.budgetExpenseDashboard)}
             >
               View Projects
             </Button>
-            <Button size="lg" className="w-64">
+            <Button
+              size="lg"
+              className={cn(
+                commonButtonClassName,
+                "from-purple-600 to-blue-600"
+              )}
+            >
               Contact Me
             </Button>
           </div>
@@ -65,3 +76,8 @@ export function HomeContainer() {
     </div>
   );
 }
+
+const commonDescriptionClassName =
+  "bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-xl font-bold text-transparent";
+const commonButtonClassName =
+  "text-md w-64 bg-gradient-to-r from-blue-600 to-purple-600 font-semibold";
