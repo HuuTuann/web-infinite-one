@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@/shadcn-ui";
 
 import { Wallet } from "../Wallet";
