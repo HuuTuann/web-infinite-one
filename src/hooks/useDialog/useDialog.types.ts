@@ -5,8 +5,8 @@ import { DialogSize, DialogType } from "./useDialog.helpers";
 type DialogProps = {
   type: DialogType;
   title: string;
-  description: string;
   content: React.ReactNode;
+  description?: string;
   options?: DialogPanelProps & {
     size?: DialogSize;
     confirmText?: string;
