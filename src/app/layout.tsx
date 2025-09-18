@@ -29,11 +29,11 @@ export const metadata: Metadata = {
     "Infinite One - A comprehensive platform offering multiple tools and solutions for modern productivity and business management.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type Props = Readonly<{
   children: React.ReactNode;
-}>) {
+}>;
+
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body

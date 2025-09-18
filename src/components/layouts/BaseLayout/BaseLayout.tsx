@@ -1,3 +1,5 @@
+"use client";
+
 import { ScrollArea } from "@/shadcn-ui";
 
 import { Header, Sidebar } from "../components";
