@@ -193,7 +193,7 @@ function Badge({
   className,
   variant,
   size,
-  appearance,
+  appearance = "light",
   shape,
   disabled,
   ...props
