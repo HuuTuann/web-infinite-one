@@ -16,11 +16,13 @@ type Props<T extends FieldValues> = SelectProps & {
   label: string;
   required?: boolean;
   description?: string;
+  hiddenLabel?: boolean;
 };
 
 export const Select = <T extends FieldValues>(props: Props<T>) => {
   const { control } = useFormContext<T>();
-  const { name, label, required, description, ...restProps } = props;
+  const { name, label, required, description, hiddenLabel, ...restProps } =
+    props;
 
   const value = useWatch({ control, name });
 
@@ -31,10 +33,12 @@ export const Select = <T extends FieldValues>(props: Props<T>) => {
       render={({ field }) => {
         return (
           <FormItem className="w-full">
-            <FormLabel className="gap-0.5">
-              {label}
-              {required && <span className="text-red-500">*</span>}
-            </FormLabel>
+            {!hiddenLabel && (
+              <FormLabel className="gap-0.5">
+                {label}
+                {required && <span className="font-bold text-red-500">*</span>}
+              </FormLabel>
+            )}
             <FormControl>
               <SelectComponent {...field} {...restProps} value={value} />
             </FormControl>

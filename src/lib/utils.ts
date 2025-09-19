@@ -1,6 +1,9 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { Content } from "@/hooks";
+import { SelectOption } from "@/io-ui";
+
 /**
  * Merges Tailwind class names, resolving any conflicts.
  *
@@ -33,4 +36,13 @@ export function formatDate(date: Date): string {
     month: "numeric",
     day: "numeric",
   }).format(date);
+}
+
+export function convertToOptions(content?: Content[]): SelectOption[] {
+  if (!content) return [];
+
+  return content.map(({ name, id }) => ({
+    label: name,
+    value: id,
+  }));
 }

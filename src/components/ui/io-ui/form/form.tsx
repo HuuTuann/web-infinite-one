@@ -4,7 +4,7 @@ import { FieldValues, FormProvider, UseFormReturn } from "react-hook-form";
 
 import { Stack } from "..";
 
-import { Input, Select } from "./components";
+import { Custom, Input, Select } from "./components";
 
 type Props<T extends FieldValues> = {
   children: React.ReactNode;
@@ -26,5 +26,6 @@ const Form = <T extends FieldValues>(props: Props<T>) => {
 
 Form.Input = Input;
 Form.Select = Select;
+Form.Custom = Custom;
 
 export { Form };

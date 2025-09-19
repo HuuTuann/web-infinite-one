@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import axios, {
   AxiosError,
   AxiosInstance,
   AxiosRequestConfig,
+  AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
 
@@ -37,7 +39,7 @@ function refreshOnce() {
 }
 
 export function api<T = unknown>(
-  cfg: AxiosRequestConfig & { _retry?: boolean },
+  cfg: AxiosRequestConfig & { _retry?: boolean }
 ) {
   return axiosInstance.request<T>(cfg);
 }
@@ -70,7 +72,16 @@ axiosInstance.interceptors.response.use(
     }
 
     throw error;
-  },
+  }
 );
+
+export const apiCall = <T, P = any>(
+  apiFunction: (params?: P) => Promise<AxiosResponse<T>>,
+  params?: P
+) => {
+  return async (): Promise<T> => {
+    return apiFunction(params).then((response) => response.data);
+  };
+};
 
 export { axiosInstance };
