@@ -2,7 +2,20 @@ import * as React from "react";
 
 import { cn } from "@/lib";
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+export type InputProps = Omit<React.ComponentProps<"input">, "onChange"> & {
+  onChange?: (value: string) => void;
+};
+
+function Input(props: InputProps) {
+  const { type, className, value, onChange, ...restProps } = props;
+  const [inputValue, setInputValue] = React.useState(value);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    onChange?.(value);
+    setInputValue(value);
+  };
+
   return (
     <input
       type={type}
@@ -13,7 +26,9 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         className
       )}
-      {...props}
+      value={inputValue}
+      onChange={handleChange}
+      {...restProps}
     />
   );
 }

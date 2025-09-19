@@ -31,7 +31,7 @@ export const Stack = memo((props: Props) => {
     const stackDirection =
       stackDirectionMap[direction ?? StackDirection.COLUMN];
     const stackJustify = stackJustifyMap[justify ?? StackJustifyAlign.START];
-    const stackAlign = stackAlignMap[align ?? StackJustifyAlign.START];
+    const stackAlign = stackAlignMap[align ?? StackJustifyAlign.STRETCH];
     const stackGap = stackGapMap[gap ?? StackGap.SM];
 
     return cn(

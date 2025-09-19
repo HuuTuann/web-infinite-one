@@ -23,7 +23,7 @@ import { SelectOption } from ".";
 export type SelectProps = {
   options: SelectOption[];
   placeholder?: string;
-  value: string;
+  value?: string;
   onChange?: (value: string) => void;
 };
 

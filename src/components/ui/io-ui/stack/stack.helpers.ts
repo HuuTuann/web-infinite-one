@@ -12,6 +12,7 @@ enum StackJustifyAlign {
   BETWEEN = "between",
   AROUND = "around",
   EVENLY = "evenly",
+  STRETCH = "stretch",
 }
 
 enum StackGap {
@@ -32,7 +33,8 @@ type StackJustifyAlignValue =
   | "end"
   | "between"
   | "around"
-  | "evenly";
+  | "evenly"
+  | "stretch";
 
 const stackDirectionMap: Record<StackDirectionValue, string> = {
   [StackDirection.ROW]: "flex-row",
@@ -48,6 +50,7 @@ const stackJustifyMap: Record<StackJustifyAlignValue, string> = {
   [StackJustifyAlign.BETWEEN]: "justify-between",
   [StackJustifyAlign.AROUND]: "justify-around",
   [StackJustifyAlign.EVENLY]: "justify-evenly",
+  [StackJustifyAlign.STRETCH]: "justify-stretch",
 };
 
 const stackAlignMap: Record<StackJustifyAlignValue, string> = {
@@ -57,6 +60,7 @@ const stackAlignMap: Record<StackJustifyAlignValue, string> = {
   [StackJustifyAlign.BETWEEN]: "items-between",
   [StackJustifyAlign.AROUND]: "items-around",
   [StackJustifyAlign.EVENLY]: "items-evenly",
+  [StackJustifyAlign.STRETCH]: "items-stretch",
 };
 
 const stackGapMap: Record<StackGapValue, string> = {

@@ -2,12 +2,9 @@ import { FormEventHandler } from "react";
 
 import { FieldValues, FormProvider, UseFormReturn } from "react-hook-form";
 
-import { Select } from "./components";
+import { Stack } from "..";
 
-// export type HandleSubmit<T extends FieldValues> = (
-//   onValid: (data: T) => void,
-//   onInvalid?: (errors: FieldErrors<T>) => void
-// ) => void;
+import { Input, Select } from "./components";
 
 type Props<T extends FieldValues> = {
   children: React.ReactNode;
@@ -21,12 +18,13 @@ const Form = <T extends FieldValues>(props: Props<T>) => {
   return (
     <FormProvider {...form}>
       <form noValidate onSubmit={onSubmit}>
-        {children}
+        <Stack gap="lg">{children}</Stack>
       </form>
     </FormProvider>
   );
 };
 
+Form.Input = Input;
 Form.Select = Select;
 
 export { Form };
