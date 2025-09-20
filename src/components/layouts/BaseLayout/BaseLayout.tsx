@@ -1,5 +1,6 @@
 "use client";
 
+import { Stack } from "@/io-ui";
 import { ScrollArea } from "@/shadcn-ui";
 
 import { Header, Sidebar } from "../components";
@@ -10,13 +11,13 @@ export function BaseLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex h-screen w-screen overflow-hidden">
+    <Stack className="h-screen w-screen">
       <Sidebar>
         <Header />
-        <ScrollArea className="h-full w-full overflow-hidden bg-slate-50 p-4">
-          {children}
-        </ScrollArea>
+        <div className="flex-1 overflow-hidden bg-slate-50 pr-1">
+          <ScrollArea className="h-full p-4">{children}</ScrollArea>
+        </div>
       </Sidebar>
-    </div>
+    </Stack>
   );
 }
