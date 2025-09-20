@@ -1,6 +1,7 @@
-import { Pencil, Wallet as WalletIcon } from "lucide-react";
+import { Clock, CreditCard, EllipsisVertical, Users } from "lucide-react";
 
-import { formatCurrency } from "@/lib";
+import { Stack } from "@/io-ui";
+import { formatCurrency, formatDate } from "@/lib";
 import { Badge, Button } from "@/re-ui";
 
 const tempData = [
@@ -86,40 +87,48 @@ export const Wallet = () => {
           totalBalance,
           totalAccounts,
           totalMembers,
+          createdAt,
         } = item;
 
         return (
-          <div
+          <Stack
             key={item.id}
-            className="flex flex-col gap-4 rounded-lg border p-4 shadow-sm"
+            gap="sm"
+            className="rounded-xl p-4 shadow-sm transition-all duration-300 hover:shadow-md"
           >
-            <div className="flex items-center gap-4">
-              <div className="bg-secondary flex size-16 items-center justify-center rounded-lg">
-                <WalletIcon size={36} />
-              </div>
-              <div className="flex flex-1 justify-between">
-                <div className="flex flex-col items-start gap-1">
-                  <h1 className="text-lg font-semibold">{name}</h1>
-                  <Badge variant="secondary">{baseCurrency}</Badge>
-                </div>
-                <Button variant="outline" mode="icon">
-                  <Pencil size={16} />
-                </Button>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <p className="text-muted-foreground text-sm">Total Balance:</p>
-                <Badge variant="secondary" size="lg">
-                  {formatCurrency(totalBalance)}
-                </Badge>
-              </div>
-              <div className="grid grid-cols-2">
-                <p className="text-muted-foreground text-sm">{`Total account: ${totalAccounts}`}</p>
-                <p className="text-muted-foreground text-sm">{`Total member: ${totalMembers}`}</p>
-              </div>
-            </div>
-          </div>
+            <Stack direction="row" justify="between" className="pb-4">
+              <Stack>
+                <h3 className="text-lg font-semibold">{name}</h3>
+                <Stack direction="row">
+                  <Badge appearance="light">{baseCurrency}</Badge>
+                  <Badge appearance="light">{baseCurrency}</Badge>
+                </Stack>
+              </Stack>
+              <Button variant="outline" mode="icon">
+                <EllipsisVertical size={16} />
+              </Button>
+            </Stack>
+            <Stack direction="row" justify="between" align="center">
+              <Stack direction="row" align="center">
+                <CreditCard size={16} color="var(--muted-foreground)" />
+                <p className="text-muted-foreground text-sm">{`${totalAccounts} accounts`}</p>
+              </Stack>
+              <Stack direction="row" align="center" justify="end">
+                <Users size={16} color="var(--muted-foreground)" />
+                <p className="text-muted-foreground text-sm">{`${totalMembers} members`}</p>
+              </Stack>
+            </Stack>
+            <Stack direction="row" justify="between" align="center">
+              <Stack direction="row" align="center">
+                <Clock size={16} color="var(--muted-foreground)" />
+                <p className="text-muted-foreground text-sm">{`Updated ${formatDate(createdAt)}`}</p>
+              </Stack>
+              <p className="text-lg font-semibold">
+                {formatCurrency(totalBalance)}
+              </p>
+            </Stack>
+            <Button className="mt-2 w-full">Open wallet</Button>
+          </Stack>
         );
       })}
     </div>
