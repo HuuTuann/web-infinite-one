@@ -30,23 +30,26 @@ export const Select = <T extends FieldValues>(props: Props<T>) => {
     <FormField
       name={name}
       control={control}
-      render={({ field }) => {
-        return (
-          <FormItem className="w-full">
-            {!hiddenLabel && (
-              <FormLabel className="gap-0.5">
-                {label}
-                {required && <span className="font-bold text-red-500">*</span>}
-              </FormLabel>
-            )}
-            <FormControl>
-              <SelectComponent {...field} {...restProps} value={value} />
-            </FormControl>
-            {description && <FormDescription>{description}</FormDescription>}
-            <FormMessage />
-          </FormItem>
-        );
-      }}
+      render={({ field, fieldState: { invalid } }) => (
+        <FormItem className="w-full">
+          {!hiddenLabel && (
+            <FormLabel className="gap-0.5">
+              {label}
+              {required && <span className="font-bold text-red-500">*</span>}
+            </FormLabel>
+          )}
+          <FormControl>
+            <SelectComponent
+              aria-invalid={invalid}
+              {...field}
+              {...restProps}
+              value={value}
+            />
+          </FormControl>
+          {description && <FormDescription>{description}</FormDescription>}
+          <FormMessage />
+        </FormItem>
+      )}
     />
   );
 };

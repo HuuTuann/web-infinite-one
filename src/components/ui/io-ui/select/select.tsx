@@ -2,9 +2,10 @@
 
 import * as React from "react";
 
-import { Check, ChevronsUpDown, X } from "lucide-react";
+import { Check, X } from "lucide-react";
+import { BarLoader } from "react-spinners";
 
-import { cn } from "@/lib/utils";
+import { cn, isEmpty } from "@/lib";
 import {
   Button,
   Command,
@@ -18,10 +19,13 @@ import {
   PopoverTrigger,
 } from "@/shadcn-ui";
 
+import { Stack } from "..";
+
 import { SelectOption } from ".";
 
-export type SelectProps = {
+export type SelectProps = Omit<React.ComponentProps<"button">, "onChange"> & {
   options: SelectOption[];
+  isLoading?: boolean;
   placeholder?: string;
   value?: string;
   isNotClearable?: boolean;
@@ -29,7 +33,15 @@ export type SelectProps = {
 };
 
 export const Select = (props: SelectProps) => {
-  const { options, placeholder, value, isNotClearable, onChange } = props;
+  const {
+    options,
+    isLoading,
+    placeholder,
+    value,
+    isNotClearable,
+    onChange,
+    ...restProps
+  } = props;
 
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(value);
@@ -57,6 +69,7 @@ export const Select = (props: SelectProps) => {
               "w-full justify-between",
               open && "border-ring/30 ring-ring/20 ring-[3px]"
             )}
+            {...restProps}
           >
             <p
               className={cn(
@@ -68,9 +81,7 @@ export const Select = (props: SelectProps) => {
                 ? options.find(({ value }) => value === selectedValue)?.label
                 : (placeholder ?? "Select an option")}
             </p>
-            <div className={cn(selectedValue && "pl-6")}>
-              <ChevronsUpDown className="opacity-50" />
-            </div>
+            <div className={cn(selectedValue && "pl-6")} />
           </Button>
         </PopoverTrigger>
         {!isNotClearable && selectedValue && (
@@ -81,31 +92,48 @@ export const Select = (props: SelectProps) => {
           />
         )}
         <PopoverContent>
-          <Command>
-            <CommandInput placeholder="Search option..." className="h-9" />
-            <CommandList>
-              <CommandEmpty>No option found.</CommandEmpty>
-              <CommandGroup>
-                {options.map(({ value, label }) => (
-                  <CommandItem
-                    key={value}
-                    value={value}
-                    onSelect={handleChange}
-                  >
-                    <p className="w-full overflow-hidden text-left text-ellipsis">
-                      {label}
-                    </p>
-                    <Check
-                      className={cn(
-                        "ml-auto",
-                        value === selectedValue ? "opacity-100" : "opacity-0"
-                      )}
-                    />
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </CommandList>
-          </Command>
+          {isLoading ? (
+            <Stack justify="center" align="center" className="p-6">
+              <p className="text-muted-foreground text-sm font-semibold">
+                Loading...
+              </p>
+              <BarLoader color="var(--primary)" />
+            </Stack>
+          ) : (
+            <Command>
+              {!isEmpty(options) && (
+                <CommandInput placeholder="Search option..." className="h-9" />
+              )}
+              <CommandList>
+                <CommandEmpty className="flex flex-col items-center justify-center py-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/empty-data.svg" alt="No data" className="h-20" />
+                  <p className="text-muted-foreground text-center text-sm font-semibold">
+                    No option found.
+                  </p>
+                </CommandEmpty>
+                <CommandGroup>
+                  {options.map(({ value, label }) => (
+                    <CommandItem
+                      key={value}
+                      value={value}
+                      onSelect={handleChange}
+                    >
+                      <p className="w-full overflow-hidden text-left text-ellipsis">
+                        {label}
+                      </p>
+                      <Check
+                        className={cn(
+                          "ml-auto",
+                          value === selectedValue ? "opacity-100" : "opacity-0"
+                        )}
+                      />
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          )}
         </PopoverContent>
       </Popover>
     </div>
