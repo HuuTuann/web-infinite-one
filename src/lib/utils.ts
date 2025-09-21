@@ -1,8 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { SelectOption } from "@/components";
 import { Content } from "@/hooks";
-import { SelectOption } from "@/io-ui";
 
 /**
  * Merges Tailwind class names, resolving any conflicts.

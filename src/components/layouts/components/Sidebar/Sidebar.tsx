@@ -1,25 +1,22 @@
-"use client";
+import SidebarAnimate from "../../../ui/frameworks/animate-ui/components/radix/sidebar";
 
-import React from "react";
+import { SidebarContent } from "./Sidebar.Content";
+import { SidebarHeader } from "./Sidebar.Header";
 
-import { Sidebar as AnimateUISidebar } from "@/animate-ui";
-
-import { SidebarContent, SidebarHeader } from "./components";
-
-type SidebarProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-export const Sidebar = ({ children }: SidebarProps) => {
+export const Sidebar = ({ children }: Props) => {
   return (
-    <AnimateUISidebar.Provider>
-      <AnimateUISidebar collapsible="icon">
+    <SidebarAnimate.Provider>
+      <SidebarAnimate collapsible="icon">
         <Sidebar.Header />
         <Sidebar.Content />
-      </AnimateUISidebar>
+      </SidebarAnimate>
 
-      <AnimateUISidebar.Inset>{children}</AnimateUISidebar.Inset>
-    </AnimateUISidebar.Provider>
+      <SidebarAnimate.Inset>{children}</SidebarAnimate.Inset>
+    </SidebarAnimate.Provider>
   );
 };
 

@@ -1,4 +1,4 @@
-import { RequireAuth } from "@/components";
+import { RequireAuth } from "@/guards";
 import { WalletContainer } from "@/modules/budgetExpense/wallet/views/WalletContainer/WalletContainer";
 
 export default function BudgetExpenseWalletPage() {

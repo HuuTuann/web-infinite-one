@@ -1,10 +1,9 @@
 import { Plus } from "lucide-react";
 
+import { Button, Stack } from "@/components";
 import { DialogSize, DialogType, useDialog } from "@/hooks";
-import { Stack } from "@/io-ui";
-import { Button } from "@/shadcn-ui";
 
-import { AddEditWallet } from "./AddEditWallet/AddEditWallet";
+import { AddEditWallet } from "../AddEditWallet";
 
 export const WalletToolbar = () => {
   const { showDialog } = useDialog();
@@ -20,8 +19,7 @@ export const WalletToolbar = () => {
 
   return (
     <Stack direction="row" justify="end" gap="sm">
-      <Button onClick={handleAddWallet}>
-        <Plus size={16} />
+      <Button onClick={handleAddWallet} leftIcon={<Plus />}>
         New Wallet
       </Button>
     </Stack>

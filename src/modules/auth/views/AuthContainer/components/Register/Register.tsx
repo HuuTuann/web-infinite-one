@@ -1,95 +1,67 @@
+import { Button, Card, Form, Grid } from "@/components";
 import { AuthKeys } from "@/modules/auth/bases";
-import {
-  Button,
-  Card,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-} from "@/shadcn-ui";
 
+import { RegisterFormValues } from "./Register.helpers";
 import { useRegisterForm } from "./useRegisterForm";
 
 export const Register = () => {
   const { form, isLoadingRegister, onSubmit } = useRegisterForm();
-  const { control } = form;
 
   return (
-    <Card className="w-full rounded-sm">
-      <Card.Header>
-        <Card.Title>Create a new account</Card.Title>
-        <Card.Description>
-          Enter your email and password below to create a new account
-        </Card.Description>
-      </Card.Header>
-      <Card.Content>
-        <Form {...form}>
-          <form noValidate onSubmit={onSubmit} className="space-y-6">
-            <FormField
-              control={control}
-              name={AuthKeys.NAME}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={control}
-              name={AuthKeys.EMAIL}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={control}
-              name={AuthKeys.PASSWORD}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="********" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={control}
-              name={AuthKeys.CONFIRM_PASSWORD}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="********" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button
-              type="submit"
-              className="w-full"
-              isLoading={isLoadingRegister}
-            >
-              Register
-            </Button>
-          </form>
-        </Form>
-      </Card.Content>
+    <Card
+      title="Create a new account"
+      description="Enter your email and password below to create a new account"
+      className="w-full rounded-sm"
+    >
+      <Form<RegisterFormValues>
+        form={form}
+        onSubmit={onSubmit}
+        className="space-y-6"
+      >
+        <Grid>
+          <Grid.Row>
+            <Grid.Col cols={12}>
+              <Form.Input
+                name={AuthKeys.NAME}
+                label="Name"
+                placeholder="Enter your name"
+              />
+            </Grid.Col>
+            <Grid.Col cols={12}>
+              <Form.Input
+                name={AuthKeys.EMAIL}
+                label="Email"
+                placeholder="Enter your email"
+              />
+            </Grid.Col>
+            <Grid.Col cols={12}>
+              <Form.Input
+                name={AuthKeys.PASSWORD}
+                label="Password"
+                placeholder="********"
+              />
+            </Grid.Col>
+            <Grid.Col cols={12}>
+              <Form.Input
+                name={AuthKeys.CONFIRM_PASSWORD}
+                label="Confirm Password"
+                placeholder="********"
+              />
+            </Grid.Col>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Col cols={12}>
+              <Button
+                type="submit"
+                className="w-full"
+                isLoading={isLoadingRegister}
+              >
+                Register
+              </Button>
+            </Grid.Col>
+          </Grid.Row>
+        </Grid>
+      </Form>
     </Card>
   );
 };

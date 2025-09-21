@@ -2,8 +2,9 @@
 
 import { useRouter } from "next/navigation";
 
+import { Button } from "@/components";
+import { HoverBackground, TypingText } from "@/frameworks-re-ui";
 import { cn, PATHS } from "@/lib";
-import { Button, HoverBackground, TypingText } from "@/re-ui";
 
 export function HomeContainer() {
   const router = useRouter();

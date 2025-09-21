@@ -1,4 +1,4 @@
-import { DialogPanelProps } from "@/animate-ui";
+import { DialogPanelProps } from "@/frameworks-animate-ui/components/headless";
 
 import { DialogSize, DialogType } from "./useDialog.helpers";
 

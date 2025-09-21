@@ -1,4 +1,4 @@
-import { RequireAuth } from "@/components";
+import { RequireAuth } from "@/guards";
 
 export default function BudgetExpenseDashboardPage() {
   return (

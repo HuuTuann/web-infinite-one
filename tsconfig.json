@@ -19,10 +19,13 @@
       }
     ],
     "paths": {
-      "@/shadcn-ui": ["./src/components/ui/shadcn-ui"],
-      "@/re-ui": ["./src/components/ui/re-ui"],
-      "@/io-ui": ["./src/components/ui/io-ui"],
-      "@/animate-ui": ["./src/components/ui/animate-ui"],
+      "@/components-layout": ["./src/components/layouts/*"],
+      "@/components-ui": ["./src/components/ui"],
+      "@/frameworks-animate-ui/*": [
+        "./src/components/ui/frameworks/animate-ui/*"
+      ],
+      "@/frameworks-re-ui": ["./src/components/ui/frameworks/re-ui"],
+      "@/frameworks-shadcn-ui": ["./src/components/ui/frameworks/shadcn-ui"],
       "@/*": ["./src/*"]
     }
   },

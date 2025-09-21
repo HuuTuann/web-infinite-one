@@ -1,41 +1,33 @@
 "use client";
 
-import {
-  Tabs,
-  TabsContent,
-  TabsContents,
-  TabsList,
-  TabsTrigger,
-} from "@/animate-ui";
-import { AuthGuard } from "@/components";
+import { TabContents, TabOptions, Tabs } from "@/components";
+import { AuthGuard } from "@/guards";
 
-import { AuthTabs, tabOptions } from "./AuthContainer.helpers";
+import { AuthTabs } from "./AuthContainer.helpers";
 import AuthComponents from "./components";
 
 export const AuthContainer = () => {
+  const tabOptions: TabOptions[] = [
+    { value: AuthTabs.LOGIN, label: "Login" },
+    { value: AuthTabs.REGISTER, label: "Register" },
+  ];
+
+  const tabContents: TabContents[] = [
+    { value: AuthTabs.LOGIN, children: <AuthComponents.Login /> },
+    { value: AuthTabs.REGISTER, children: <AuthComponents.Register /> },
+  ];
+
   return (
     <AuthGuard>
       <div className="flex min-h-screen w-full items-center justify-center">
         <Tabs
           defaultValue={AuthTabs.LOGIN}
+          tabOptions={tabOptions}
+          tabContents={tabContents}
           className="bg-muted w-md rounded-lg"
-        >
-          <TabsList className="w-full">
-            {tabOptions.map((tab) => (
-              <TabsTrigger key={tab.value} value={tab.value}>
-                {tab.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          <TabsContents className="bg-background m-1 -mt-2 h-full rounded-sm">
-            <TabsContent value={AuthTabs.LOGIN}>
-              <AuthComponents.Login />
-            </TabsContent>
-            <TabsContent value={AuthTabs.REGISTER}>
-              <AuthComponents.Register />
-            </TabsContent>
-          </TabsContents>
-        </Tabs>
+          listClassName="w-full"
+          contentClassName="bg-background m-1 -mt-2 h-full rounded-sm"
+        />
       </div>
     </AuthGuard>
   );

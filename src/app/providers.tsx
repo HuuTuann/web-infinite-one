@@ -2,11 +2,11 @@
 
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ToastContainer } from "react-toastify";
 
-import { Loading } from "@/animate-ui";
+import { Loading } from "@/components";
 import { DialogProvider, useHydration } from "@/hooks";
-import { queryClient } from "@/lib";
-import { Toaster } from "@/shadcn-ui";
+import { queryClient, toastifyConfig } from "@/lib";
 
 export default function Providers({
   children,
@@ -20,7 +20,7 @@ export default function Providers({
   return (
     <QueryClientProvider client={queryClient}>
       <DialogProvider>{children}</DialogProvider>
-      <Toaster position="top-right" />
+      <ToastContainer {...toastifyConfig} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

@@ -8,9 +8,8 @@ import {
   useState,
 } from "react";
 
-import { Dialog } from "@/animate-ui";
+import { Button, Dialog } from "@/components";
 import { cn } from "@/lib";
-import { Button } from "@/shadcn-ui";
 
 import { DialogSize, dialogSizeMap, DialogType } from "./useDialog.helpers";
 import { DialogContextType, DialogProps } from "./useDialog.types";

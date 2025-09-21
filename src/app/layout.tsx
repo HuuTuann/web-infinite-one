@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
 
-import { Loading } from "@/animate-ui";
+import { Loading } from "@/components";
 
 import Providers from "./providers";
 

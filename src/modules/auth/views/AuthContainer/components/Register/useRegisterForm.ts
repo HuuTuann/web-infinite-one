@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { Toastify } from "@/io-ui";
+import { Toastify } from "@/components";
 import { PATHS } from "@/lib";
 import { useRegister } from "@/modules/auth/queries";
 import { useAuthStore } from "@/stores";

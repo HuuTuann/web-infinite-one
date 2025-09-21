@@ -1,8 +1,8 @@
 import { Clock, CreditCard, EllipsisVertical, Users } from "lucide-react";
 
-import { Stack } from "@/io-ui";
+import { Button, Stack } from "@/components";
+import { Badge } from "@/components/ui/frameworks/re-ui";
 import { formatCurrency, formatDate } from "@/lib";
-import { Badge, Button } from "@/re-ui";
 
 const tempData = [
   {
@@ -104,7 +104,7 @@ export const Wallet = () => {
                   <Badge appearance="light">{baseCurrency}</Badge>
                 </Stack>
               </Stack>
-              <Button variant="outline" mode="icon">
+              <Button variant="outline" size="icon">
                 <EllipsisVertical size={16} />
               </Button>
             </Stack>

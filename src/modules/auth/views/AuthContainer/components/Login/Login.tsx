@@ -1,65 +1,55 @@
+import { Button, Card, Form, Grid } from "@/components";
 import { AuthKeys } from "@/modules/auth/bases";
-import {
-  Button,
-  Card,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-} from "@/shadcn-ui";
 
+import { LoginFormValues } from "./Login.helpers";
 import { useLoginForm } from "./useLoginForm";
 
 export const Login = () => {
   const { form, isLoadingLogin, onSubmit } = useLoginForm();
-  const { control } = form;
 
   return (
-    <Card className="w-full rounded-sm">
-      <Card.Header>
-        <Card.Title>Login to your account</Card.Title>
-        <Card.Description>
-          Enter your email below to login to your account
-        </Card.Description>
-      </Card.Header>
-      <Card.Content>
-        <Form {...form}>
-          <form noValidate onSubmit={onSubmit} className="space-y-6">
-            <FormField
-              control={control}
-              name={AuthKeys.EMAIL}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={control}
-              name={AuthKeys.PASSWORD}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="********" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" className="w-full" isLoading={isLoadingLogin}>
-              Login
-            </Button>
-          </form>
-        </Form>
-      </Card.Content>
+    <Card
+      title="Login to your account"
+      description="Enter your email below to login to your account"
+      className="w-full rounded-sm"
+    >
+      <Form<LoginFormValues>
+        form={form}
+        onSubmit={onSubmit}
+        className="space-y-6"
+      >
+        <Grid>
+          <Grid.Row>
+            <Grid.Col cols={12}>
+              <Form.Input
+                name={AuthKeys.EMAIL}
+                label="Email"
+                placeholder="Enter your email"
+              />
+            </Grid.Col>
+            <Grid.Col cols={12}>
+              <Form.Input
+                type="password"
+                name={AuthKeys.PASSWORD}
+                label="Password"
+                placeholder="********"
+              />
+            </Grid.Col>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Col cols={12}>
+              <Button
+                type="submit"
+                className="w-full"
+                isLoading={isLoadingLogin}
+              >
+                Login
+              </Button>
+            </Grid.Col>
+          </Grid.Row>
+        </Grid>
+      </Form>
     </Card>
   );
 };

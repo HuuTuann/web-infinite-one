@@ -1,4 +1,4 @@
-import { BaseLayout } from "@/components/layouts";
+import { BaseLayout } from "@/components";
 
 type Props = Readonly<{
   children: React.ReactNode;

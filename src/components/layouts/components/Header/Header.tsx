@@ -2,12 +2,12 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { LogOut } from "lucide-react";
 
-import { DropdownMenu } from "@/animate-ui";
-import { Toastify } from "@/io-ui";
+import { Toastify } from "@/components";
 import { PATHS } from "@/lib";
 import { useLogout } from "@/modules/auth/queries";
-import { Avatar } from "@/shadcn-ui";
 import { useAuthStore } from "@/stores";
+
+import { Button } from "../../../ui";
 
 import { HeaderHelpers } from "./Header.helpers";
 
@@ -33,7 +33,12 @@ export const Header = () => {
         {HeaderHelpers.titles[pathname]}
       </p>
 
-      <DropdownMenu>
+      <Button variant="outline" onClick={() => onLogout()}>
+        <LogOut />
+        Log out
+      </Button>
+
+      {/* <DropdownMenu>
         <DropdownMenu.Trigger asChild>
           <Avatar className="size-10">
             <Avatar.Fallback className="rounded-lg">CN</Avatar.Fallback>
@@ -63,7 +68,7 @@ export const Header = () => {
             Log out
           </DropdownMenu.Item>
         </DropdownMenu.Content>
-      </DropdownMenu>
+      </DropdownMenu> */}
     </header>
   );
 };

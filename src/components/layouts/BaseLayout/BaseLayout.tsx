@@ -1,21 +1,20 @@
 "use client";
 
-import { Stack } from "@/io-ui";
-import { ScrollArea } from "@/shadcn-ui";
+import { Scroll, Stack } from "@/components";
 
 import { Header, Sidebar } from "../components";
 
-export function BaseLayout({
-  children,
-}: Readonly<{
+type Props = Readonly<{
   children: React.ReactNode;
-}>) {
+}>;
+
+export function BaseLayout({ children }: Props) {
   return (
     <Stack className="h-screen w-screen">
       <Sidebar>
         <Header />
-        <div className="flex-1 overflow-hidden bg-slate-50 pr-1">
-          <ScrollArea className="h-full p-4">{children}</ScrollArea>
+        <div className="flex-1 overflow-hidden bg-slate-50 pr-2">
+          <Scroll.Area className="h-full p-4">{children}</Scroll.Area>
         </div>
       </Sidebar>
     </Stack>
