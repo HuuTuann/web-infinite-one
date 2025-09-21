@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import { Loading, Toastify } from "@/components";
+import { Toastify } from "@/components";
 import { PATHS } from "@/lib";
 import { useAuthStore } from "@/stores";
 
@@ -27,6 +27,4 @@ export const RequireAuth = ({ children, redirectTo = PATHS.auth }: Props) => {
   if (isAuthenticated) {
     return <>{children}</>;
   }
-
-  return <Loading />;
 };

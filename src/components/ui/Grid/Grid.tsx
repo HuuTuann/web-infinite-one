@@ -23,7 +23,7 @@ export const Grid = (props: GridProps) => {
   const { children, className } = props;
 
   return (
-    <Stack gap="lg" className={className}>
+    <Stack gap="sm" className={className}>
       {children}
     </Stack>
   );
