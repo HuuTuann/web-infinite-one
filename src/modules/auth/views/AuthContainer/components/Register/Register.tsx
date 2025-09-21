@@ -13,12 +13,8 @@ export const Register = () => {
       description="Enter your email and password below to create a new account"
       className="w-full rounded-sm"
     >
-      <Form<RegisterFormValues>
-        form={form}
-        onSubmit={onSubmit}
-        className="space-y-6"
-      >
-        <Grid>
+      <Form<RegisterFormValues> form={form} onSubmit={onSubmit}>
+        <Grid className="gap-6">
           <Grid.Row>
             <Grid.Col cols={12}>
               <Form.Input

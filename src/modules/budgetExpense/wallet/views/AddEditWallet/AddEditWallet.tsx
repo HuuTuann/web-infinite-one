@@ -85,36 +85,30 @@ export const AddEditWallet = () => {
                     <Grid.Row key={id} className="items-start">
                       <Grid.Col cols={4}>
                         <Form.Select
-                          label="Email"
                           placeholder="Select a base currency"
                           name={getPrefixInvitedMembers(
                             index,
                             InvitedMembersKeys.EMAIL
                           )}
                           options={[]}
-                          hiddenLabel
                         />
                       </Grid.Col>
                       <Grid.Col cols={4}>
                         <Form.Input
-                          label="Name"
                           placeholder="Enter a name"
                           name={getPrefixInvitedMembers(
                             index,
                             InvitedMembersKeys.NAME
                           )}
-                          hiddenLabel
                         />
                       </Grid.Col>
                       <Grid.Col cols={3}>
                         <Form.Select
-                          label="Role"
                           placeholder="Select a role"
                           name={getPrefixInvitedMembers(
                             index,
                             InvitedMembersKeys.ROLE
                           )}
-                          hiddenLabel
                           options={roleOptions}
                         />
                       </Grid.Col>

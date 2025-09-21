@@ -2,19 +2,18 @@ import { FieldValues, Path, useFormContext, useWatch } from "react-hook-form";
 
 import { Select as SelectComponent, SelectProps } from "@/components-ui";
 import { FormShadcn } from "@/frameworks-shadcn-ui";
+import { isEmpty } from "@/lib";
 
 type Props<T extends FieldValues> = SelectProps & {
   name: Path<T>;
-  label: string;
+  label?: string;
   required?: boolean;
   description?: string;
-  hiddenLabel?: boolean;
 };
 
 export const Select = <T extends FieldValues>(props: Props<T>) => {
   const { control } = useFormContext<T>();
-  const { name, label, required, description, hiddenLabel, ...restProps } =
-    props;
+  const { name, label, required, description, ...restProps } = props;
 
   const value = useWatch({ control, name });
 
@@ -24,7 +23,7 @@ export const Select = <T extends FieldValues>(props: Props<T>) => {
       control={control}
       render={({ field, fieldState: { invalid } }) => (
         <FormShadcn.Item className="w-full">
-          {!hiddenLabel && (
+          {!isEmpty(label) && (
             <FormShadcn.Label className="gap-0.5">
               {label}
               {required && <span className="font-bold text-red-500">*</span>}

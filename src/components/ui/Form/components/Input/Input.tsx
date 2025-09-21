@@ -5,19 +5,18 @@ import {
   type InputProps,
   InputShadcn,
 } from "@/frameworks-shadcn-ui";
+import { isEmpty } from "@/lib";
 
 type Props<T extends FieldValues> = InputProps & {
   name: Path<T>;
-  label: string;
+  label?: string;
   required?: boolean;
   description?: string;
-  hiddenLabel?: boolean;
 };
 
 export const Input = <T extends FieldValues>(props: Props<T>) => {
   const { control } = useFormContext<T>();
-  const { name, label, required, description, hiddenLabel, ...restProps } =
-    props;
+  const { name, label, required, description, ...restProps } = props;
 
   const value = useWatch({ control, name });
 
@@ -27,7 +26,7 @@ export const Input = <T extends FieldValues>(props: Props<T>) => {
       control={control}
       render={({ field }) => (
         <FormShadcn.Item>
-          {!hiddenLabel && (
+          {!isEmpty(label) && (
             <FormShadcn.Label className="gap-0.5">
               {label}
               {required && <span className="font-bold text-red-500">*</span>}
