@@ -1,6 +1,6 @@
 import { FieldValues, Path, useFormContext } from "react-hook-form";
 
-import { Stack } from "@/components-ui";
+import { Stack } from "@/components";
 import { FormShadcn } from "@/frameworks-shadcn-ui";
 
 type Props<T extends FieldValues> = {

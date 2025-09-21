@@ -11,3 +11,4 @@ export * from "./Select";
 export * from "./Stack";
 export * from "./Tabs";
 export * from "./Toastify";
+export * from "./Tooltip";

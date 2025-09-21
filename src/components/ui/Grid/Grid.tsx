@@ -1,4 +1,4 @@
-import { Stack } from "@/components-ui";
+import { Stack } from "@/components";
 import { cn } from "@/lib";
 
 import { GridCols, gridColsMap, GridColsValue } from "./Grid.helpers";

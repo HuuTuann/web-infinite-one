@@ -20,7 +20,6 @@
     ],
     "paths": {
       "@/components-layout": ["./src/components/layouts/*"],
-      "@/components-ui": ["./src/components/ui"],
       "@/frameworks-animate-ui/*": [
         "./src/components/ui/frameworks/animate-ui/*"
       ],

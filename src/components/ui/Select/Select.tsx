@@ -5,7 +5,7 @@ import * as React from "react";
 import { Check, X } from "lucide-react";
 import { BarLoader } from "react-spinners";
 
-import { Stack } from "@/components-ui";
+import { Stack } from "@/components";
 import {
   ButtonShadcn,
   CommandShadcn,

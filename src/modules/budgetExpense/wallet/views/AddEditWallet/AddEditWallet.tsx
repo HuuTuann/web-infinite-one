@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useFieldArray } from "react-hook-form";
 
-import { Button, Card, Form, Grid, Label } from "@/components";
+import { Button, Card, Form, Grid, Label, Tooltip } from "@/components";
 import { useContent } from "@/hooks";
 import { convertToOptions } from "@/lib";
 
@@ -114,13 +114,20 @@ export const AddEditWallet = () => {
                       </Grid.Col>
 
                       <Grid.Col cols={1}>
-                        <Button
-                          variant="outline"
-                          onClick={() => removeInvitedMembers(index)}
-                          disabled={invitedMembersFields.length === 1}
+                        <Tooltip
+                          align="end"
+                          {...(invitedMembersFields.length === 1 && {
+                            content: "You cannot remove the last member",
+                          })}
                         >
-                          <X size={16} />
-                        </Button>
+                          <Button
+                            variant="outline"
+                            onClick={() => removeInvitedMembers(index)}
+                            disabled={invitedMembersFields.length === 1}
+                          >
+                            <X size={16} />
+                          </Button>
+                        </Tooltip>
                       </Grid.Col>
                     </Grid.Row>
                   ))}

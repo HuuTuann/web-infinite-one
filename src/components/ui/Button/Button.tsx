@@ -10,16 +10,23 @@ type Props = ButtonProps & {
 };
 
 export const Button = (props: Props) => {
-  const { isLoading, className, children, leftIcon, rightIcon, ...rest } =
-    props;
+  const {
+    isLoading,
+    className,
+    children,
+    leftIcon,
+    rightIcon,
+    disabled,
+    ...rest
+  } = props;
   const { variant = "default" } = props;
 
   return (
     <ButtonShadcn
       type="button"
       {...rest}
+      disabled={isLoading || disabled}
       className={cn(className, "cursor-pointer")}
-      disabled={isLoading}
     >
       {isLoading && (
         <PuffLoader color={variant === "default" ? "#fff" : "#000"} size={24} />

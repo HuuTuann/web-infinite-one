@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "@/components";
+import { Card, Stack } from "@/components";
 
 import { Wallet } from "../Wallet";
 import { WalletToolbar } from "../WalletToolbar";
@@ -8,10 +8,10 @@ import { WalletToolbar } from "../WalletToolbar";
 export const WalletContainer = () => {
   return (
     <Card title="Wallet">
-      <div className="flex flex-col gap-4">
+      <Stack gap="md">
         <WalletToolbar />
         <Wallet />
-      </div>
+      </Stack>
     </Card>
   );
 };

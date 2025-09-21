@@ -1,6 +1,6 @@
 import { FieldValues, Path, useFormContext, useWatch } from "react-hook-form";
 
-import { Select as SelectComponent, SelectProps } from "@/components-ui";
+import { Select as SelectComponent, SelectProps } from "@/components";
 import { FormShadcn } from "@/frameworks-shadcn-ui";
 import { isEmpty } from "@/lib";
 
