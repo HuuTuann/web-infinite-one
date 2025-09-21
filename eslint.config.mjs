@@ -37,6 +37,9 @@ const eslintConfig = [
       "no-unused-vars": "off",
       "no-duplicate-imports": "error",
 
+      // TypeScript unused vars rules - turn off to avoid conflict with unused-imports
+      "@typescript-eslint/no-unused-vars": "off",
+
       // sort imports/exports with sensible groups
       "simple-import-sort/imports": [
         "warn",
