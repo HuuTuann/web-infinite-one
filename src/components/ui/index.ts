@@ -12,3 +12,4 @@ export * from "./Stack";
 export * from "./Tabs";
 export * from "./Toastify";
 export * from "./Tooltip";
+export * from "./Typography";

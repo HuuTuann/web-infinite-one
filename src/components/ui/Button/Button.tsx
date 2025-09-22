@@ -1,4 +1,4 @@
-import { PuffLoader } from "react-spinners";
+import { ScaleLoader } from "react-spinners";
 
 import { ButtonProps, ButtonShadcn } from "@/frameworks-shadcn-ui";
 import { cn } from "@/lib";
@@ -29,7 +29,13 @@ export const Button = (props: Props) => {
       className={cn(className, "cursor-pointer")}
     >
       {isLoading && (
-        <PuffLoader color={variant === "default" ? "#fff" : "#000"} size={24} />
+        <ScaleLoader
+          barCount={3}
+          margin={1}
+          width={3}
+          height={12}
+          color={variant === "default" ? "#fff" : "#000"}
+        />
       )}
       {!isLoading && leftIcon}
       {children}
