@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-import { Button, Dialog } from "@/components";
+import { Button, Dialog, Scroll } from "@/components";
 import { cn } from "@/lib";
 
 import { DialogSize, dialogSizeMap, DialogType } from "./useDialog.helpers";
@@ -61,22 +61,27 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
       {currentDialog && (
         <Dialog open={true} onClose={hideDialog}>
-          <Dialog.Panel {...restOptions} className={cn(dialogSizeMap[size])}>
+          <Dialog.Panel
+            {...restOptions}
+            className={cn(dialogSizeMap[size], "max-h-[80dvh]")}
+          >
             <Dialog.Header>
               <Dialog.Title>{title}</Dialog.Title>
               {description && (
                 <Dialog.Description>{description}</Dialog.Description>
               )}
             </Dialog.Header>
-            {content}
-            {type === DialogType.CONFIRM && (
-              <Dialog.Footer>
-                <Button variant="outline" onClick={handleCancel}>
-                  {cancelText}
-                </Button>
-                <Button onClick={handleConfirm}>{confirmText}</Button>
-              </Dialog.Footer>
-            )}
+            <Scroll.Area className="-m-2 -mr-4 overflow-hidden">
+              <div className="p-2 pr-4">{content}</div>
+              {type === DialogType.CONFIRM && (
+                <Dialog.Footer>
+                  <Button variant="outline" onClick={handleCancel}>
+                    {cancelText}
+                  </Button>
+                  <Button onClick={handleConfirm}>{confirmText}</Button>
+                </Dialog.Footer>
+              )}
+            </Scroll.Area>
           </Dialog.Panel>
         </Dialog>
       )}

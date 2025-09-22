@@ -26,7 +26,20 @@ const invitedMembersInitialValues = {
 const initialValues: AddEditWalletFormValues = {
   [WalletKeys.NAME]: "",
   [WalletKeys.BASE_CURRENCY]: "",
-  [WalletKeys.INVITED_MEMBERS]: [invitedMembersInitialValues],
+  [WalletKeys.INVITED_MEMBERS]: [
+    invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+    // invitedMembersInitialValues,
+  ],
 };
 
 const AddEditWalletFormHelpers = {

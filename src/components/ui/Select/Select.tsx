@@ -21,6 +21,7 @@ export type SelectProps = Omit<React.ComponentProps<"button">, "onChange"> & {
   placeholder?: string;
   value?: string;
   isNotClearable?: boolean;
+  disabled?: boolean;
   onChange?: (value: string) => void;
 };
 
@@ -50,7 +51,7 @@ export const Select = (props: SelectProps) => {
   };
 
   return (
-    <div className="relative -m-[3px] w-full overflow-hidden p-[3px]">
+    <div className="relative -m-[3px] overflow-hidden p-[3px]">
       <PopoverShadcn open={open} onOpenChange={setOpen}>
         <PopoverShadcn.Trigger asChild>
           <ButtonShadcn
@@ -73,17 +74,17 @@ export const Select = (props: SelectProps) => {
                 ? options.find(({ value }) => value === selectedValue)?.label
                 : (placeholder ?? "Select an option")}
             </p>
-            <div className={cn(selectedValue && "pl-6")} />
+            <div className={cn(selectedValue && "pl-2")} />
           </ButtonShadcn>
         </PopoverShadcn.Trigger>
         {!isNotClearable && selectedValue && (
           <X
             size={16}
             onClick={handleClear}
-            className="absolute top-1/2 right-9 -translate-y-1/2 cursor-pointer opacity-50 hover:opacity-100"
+            className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer opacity-50 hover:opacity-100"
           />
         )}
-        <PopoverShadcn.Content>
+        <PopoverShadcn.Content className="p-0">
           {isLoading ? (
             <Stack justify="center" align="center" className="p-6">
               <p className="text-muted-foreground text-sm font-semibold">

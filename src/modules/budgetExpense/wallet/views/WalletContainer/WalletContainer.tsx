@@ -2,7 +2,7 @@
 
 import { Card, Stack } from "@/components";
 
-import { Wallet } from "../Wallet";
+import { WalletCard } from "../WalletCard";
 import { WalletToolbar } from "../WalletToolbar";
 
 export const WalletContainer = () => {
@@ -10,7 +10,7 @@ export const WalletContainer = () => {
     <Card title="Wallet">
       <Stack gap="md">
         <WalletToolbar />
-        <Wallet />
+        <WalletCard />
       </Stack>
     </Card>
   );

@@ -1,6 +1,6 @@
 import { Clock, CreditCard, EllipsisVertical, Users } from "lucide-react";
 
-import { Button, Stack } from "@/components";
+import { Button, Stack, Typography } from "@/components";
 import { Badge } from "@/components/ui/frameworks/re-ui";
 import { formatCurrency, formatDate } from "@/lib";
 
@@ -77,7 +77,7 @@ const tempData = [
   },
 ];
 
-export const Wallet = () => {
+export const WalletCard = () => {
   return (
     <div className="grid grid-cols-3 gap-4">
       {tempData.map((item) => {
@@ -98,7 +98,7 @@ export const Wallet = () => {
           >
             <Stack direction="row" justify="between" className="pb-4">
               <Stack>
-                <h3 className="text-lg font-semibold">{name}</h3>
+                <Typography variant="h4">{name}</Typography>
                 <Stack direction="row">
                   <Badge appearance="light">{baseCurrency}</Badge>
                   <Badge appearance="light">{baseCurrency}</Badge>
@@ -111,21 +111,21 @@ export const Wallet = () => {
             <Stack direction="row" justify="between" align="center">
               <Stack direction="row" align="center">
                 <CreditCard size={16} color="var(--muted-foreground)" />
-                <p className="text-muted-foreground text-sm">{`${totalAccounts} accounts`}</p>
+                <Typography.Muted>{`${totalAccounts} accounts`}</Typography.Muted>
               </Stack>
               <Stack direction="row" align="center" justify="end">
                 <Users size={16} color="var(--muted-foreground)" />
-                <p className="text-muted-foreground text-sm">{`${totalMembers} members`}</p>
+                <Typography.Muted>{`${totalMembers} members`}</Typography.Muted>
               </Stack>
             </Stack>
             <Stack direction="row" justify="between" align="center">
               <Stack direction="row" align="center">
                 <Clock size={16} color="var(--muted-foreground)" />
-                <p className="text-muted-foreground text-sm">{`Updated ${formatDate(createdAt)}`}</p>
+                <Typography.Muted>{`Updated ${formatDate(createdAt)}`}</Typography.Muted>
               </Stack>
-              <p className="text-lg font-semibold">
+              <Typography.Large>
                 {formatCurrency(totalBalance)}
-              </p>
+              </Typography.Large>
             </Stack>
             <Button className="mt-2 w-full">Open wallet</Button>
           </Stack>
