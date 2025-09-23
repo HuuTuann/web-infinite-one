@@ -22,7 +22,7 @@ function getPath(url?: string) {
 }
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_SERVICE_URL}/api/v1/`,
+  baseURL: `${process.env.NEXT_PUBLIC_WEB_URL}/api/v1/`,
   withCredentials: true,
 });
 
