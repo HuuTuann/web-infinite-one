@@ -1,5 +1,5 @@
 export * from "./useAutoHeight";
-export * from "./useContent";
+export * from "./useContents";
 export * from "./useControlledState";
 export * from "./useDialog";
 export * from "./useHydration";

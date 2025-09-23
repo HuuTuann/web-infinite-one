@@ -1,31 +1,17 @@
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import { LogOut } from "lucide-react";
 
-import { Toastify } from "@/components";
-import { PATHS } from "@/lib";
 import { useLogout } from "@/modules/auth/queries";
-import { useAuthStore } from "@/stores";
 
 import { Button } from "../../../ui";
 
 import { HeaderHelpers } from "./Header.helpers";
 
 export const Header = () => {
-  const router = useRouter();
   const pathname = usePathname();
 
-  const onAuthLogout = useAuthStore((s) => s.logout);
-
-  const { onLogout } = useLogout({
-    onSuccess: () => {
-      onAuthLogout();
-      router.push(PATHS.root);
-    },
-    onError: () => {
-      Toastify.Error("Logout failed");
-    },
-  });
+  const { onLogout, isLoggingOut } = useLogout();
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between gap-2 border-b p-4">
@@ -33,8 +19,12 @@ export const Header = () => {
         {HeaderHelpers.titles[pathname]}
       </p>
 
-      <Button variant="outline" onClick={() => onLogout()}>
-        <LogOut />
+      <Button
+        variant="outline"
+        isLoading={isLoggingOut}
+        onClick={() => onLogout()}
+        leftIcon={<LogOut />}
+      >
         Log out
       </Button>
 

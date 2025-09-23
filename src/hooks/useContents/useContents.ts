@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { apiCall, axiosInstance } from "@/lib";
+import { apiCall, httpsService } from "@/lib";
 
-import { ContentResponse } from "./useContent.types";
+import { ContentResponse } from "./useContents.types";
 
 const QUERY_KEY = "/contents";
 
 const getContent = () => {
-  return axiosInstance.get("/contents");
+  return httpsService.get("/contents");
 };
 
 export const useContent = () => {

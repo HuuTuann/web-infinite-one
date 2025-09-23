@@ -6,15 +6,20 @@ import {
 } from "@/modules/budgetExpense/wallet/base";
 
 const schema = z.object({
-  [WalletKeys.NAME]: z.string().nonempty("This field is required"),
-  [WalletKeys.BASE_CURRENCY]: z.string().nonempty("This field is required"),
-  [WalletKeys.INVITED_MEMBERS]: z.array(
-    z.object({
-      [InvitedMembersKeys.EMAIL]: z.string(),
-      [InvitedMembersKeys.NAME]: z.string(),
-      [InvitedMembersKeys.ROLE]: z.string(),
-    })
-  ),
+  [WalletKeys.NAME]: z
+    .string()
+    .nonempty("This field is required")
+    .max(100, "This field must be less than 100 characters"),
+  [WalletKeys.BASE_CURRENCY_ID]: z.string().nonempty("This field is required"),
+  [WalletKeys.INVITED_MEMBERS]: z
+    .array(
+      z.object({
+        [InvitedMembersKeys.EMAIL]: z.string(),
+        [InvitedMembersKeys.NAME]: z.string(),
+        [InvitedMembersKeys.ROLE]: z.string(),
+      })
+    )
+    .optional(),
 });
 
 const invitedMembersInitialValues = {
@@ -25,21 +30,8 @@ const invitedMembersInitialValues = {
 
 const initialValues: AddEditWalletFormValues = {
   [WalletKeys.NAME]: "",
-  [WalletKeys.BASE_CURRENCY]: "",
-  [WalletKeys.INVITED_MEMBERS]: [
-    invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-    // invitedMembersInitialValues,
-  ],
+  [WalletKeys.BASE_CURRENCY_ID]: "",
+  [WalletKeys.INVITED_MEMBERS]: [invitedMembersInitialValues],
 };
 
 const AddEditWalletFormHelpers = {

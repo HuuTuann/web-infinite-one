@@ -21,7 +21,7 @@ function getPath(url?: string) {
   }
 }
 
-const axiosInstance: AxiosInstance = axios.create({
+const httpsService: AxiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_WEB_URL}/api/v1/`,
   withCredentials: true,
 });
@@ -29,7 +29,7 @@ const axiosInstance: AxiosInstance = axios.create({
 let refreshPromise: Promise<void> | null = null;
 
 function refreshOnce() {
-  refreshPromise ??= axiosInstance
+  refreshPromise ??= httpsService
     .post(REFRESH_PATH)
     .then(() => {})
     .finally(() => {
@@ -41,10 +41,10 @@ function refreshOnce() {
 export function api<T = unknown>(
   cfg: AxiosRequestConfig & { _retry?: boolean }
 ) {
-  return axiosInstance.request<T>(cfg);
+  return httpsService.request<T>(cfg);
 }
 
-axiosInstance.interceptors.response.use(
+httpsService.interceptors.response.use(
   (resp) => resp,
   async (error: AxiosError) => {
     const status = error.response?.status;
@@ -84,4 +84,4 @@ export const apiCall = <T, P = any>(
   };
 };
 
-export { axiosInstance };
+export { httpsService };

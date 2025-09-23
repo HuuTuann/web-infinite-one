@@ -1,8 +1,8 @@
 import { X } from "lucide-react";
 import { useFieldArray } from "react-hook-form";
 
-import { Button, Card, Form, Grid, Label, Tooltip } from "@/components";
-import { useContent } from "@/hooks";
+import { Button, Card, Form, Grid, Label, Stack, Tooltip } from "@/components";
+import { useContent, useDialog } from "@/hooks";
 import { convertToOptions } from "@/lib";
 
 import { InvitedMembersKeys, WalletKeys } from "../../base";
@@ -15,8 +15,9 @@ import {
 import { getPrefixInvitedMembers } from "./AddEditWallet.helpers";
 
 export const AddEditWallet = () => {
+  const { hideDialog } = useDialog();
   const { contents } = useContent();
-  const { form, onSubmit } = useAddEditWalletForm();
+  const { form, isLoadingCreateWallet, onSubmit } = useAddEditWalletForm();
   const { control } = form;
   const {
     fields: invitedMembersFields,
@@ -49,11 +50,10 @@ export const AddEditWallet = () => {
           <Grid.Col>
             <Form.Select
               required
-              name={WalletKeys.BASE_CURRENCY}
+              name={WalletKeys.BASE_CURRENCY_ID}
               label="Base Currency"
               options={baseCurrencyOptions}
               placeholder="Select a base currency"
-              isLoading={true}
             />
           </Grid.Col>
 
@@ -136,6 +136,19 @@ export const AddEditWallet = () => {
             </Form.Custom>
           </Grid.Col>
         </Grid.Row>
+
+        <Stack direction="row" justify="end">
+          <Button
+            variant="outline"
+            isLoading={isLoadingCreateWallet}
+            onClick={hideDialog}
+          >
+            Cancel
+          </Button>
+          <Button type="submit" isLoading={isLoadingCreateWallet}>
+            Add Wallet
+          </Button>
+        </Stack>
       </Grid>
     </Form>
   );
