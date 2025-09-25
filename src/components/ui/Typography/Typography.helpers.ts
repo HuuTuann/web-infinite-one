@@ -8,9 +8,8 @@ enum TypographyVariant {
 
 const typographyClassNameMap: Record<TypographyVariant, string> = {
   [TypographyVariant.H1]:
-    "scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance",
-  [TypographyVariant.H2]:
-    "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+    "scroll-m-20 text-3xl font-semibold tracking-tight text-balance",
+  [TypographyVariant.H2]: "scroll-m-20 text-3xl font-semibold tracking-tight ",
   [TypographyVariant.H3]: "scroll-m-20 text-2xl font-semibold tracking-tight",
   [TypographyVariant.H4]: "scroll-m-20 text-xl font-semibold tracking-tight",
   [TypographyVariant.P]: "leading-7 [&:not(:first-child)]:mt-6",

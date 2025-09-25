@@ -24,7 +24,7 @@ export const WalletCard = ({ wallet }: Props) => {
   return (
     <Stack
       gap="sm"
-      className="rounded-xl p-4 shadow-sm transition-all duration-300 hover:shadow-md"
+      className="border-border rounded-lg border-2 bg-white p-4 transition-all duration-300 hover:shadow-md"
     >
       <Stack direction="row" justify="between" className="pb-4">
         <Stack>

@@ -2,9 +2,8 @@ import { usePathname } from "next/navigation";
 
 import { LogOut } from "lucide-react";
 
+import { Button, Typography } from "@/components";
 import { useLogout } from "@/modules/auth/queries";
-
-import { Button } from "../../../ui";
 
 import { HeaderHelpers } from "./Header.helpers";
 
@@ -15,9 +14,7 @@ export const Header = () => {
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between gap-2 border-b p-4">
-      <p className="text-2xl font-semibold text-slate-950">
-        {HeaderHelpers.titles[pathname]}
-      </p>
+      <Typography variant="h1">{HeaderHelpers.titleMap[pathname]}</Typography>
 
       <Button
         variant="outline"

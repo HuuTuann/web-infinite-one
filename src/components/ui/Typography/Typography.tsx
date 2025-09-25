@@ -17,19 +17,15 @@ type Props = {
   children: React.ReactNode;
   variant?: TypographyVariantValue;
   className?: string;
-  style?: React.CSSProperties;
 };
 
 export const Typography = (props: Props) => {
-  const { children, variant = TypographyVariant.P, className, style } = props;
+  const { children, variant = TypographyVariant.P, className } = props;
 
   const Component = variant;
 
   return (
-    <Component
-      className={cn(className, typographyClassNameMap[variant])}
-      style={style}
-    >
+    <Component className={cn(className, typographyClassNameMap[variant])}>
       {children}
     </Component>
   );

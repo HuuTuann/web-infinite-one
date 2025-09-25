@@ -13,9 +13,9 @@ export function BaseLayout({ children }: Props) {
     <Stack className="h-screen w-screen">
       <Sidebar>
         <Header />
-        <div className="flex-1 overflow-hidden bg-slate-50 pr-2">
-          <Scroll.Area className="h-full p-4">{children}</Scroll.Area>
-        </div>
+        <Scroll.Area className="mr-1 h-full flex-1 overflow-hidden pr-1">
+          <div className="p-5 pr-3">{children}</div>
+        </Scroll.Area>
       </Sidebar>
     </Stack>
   );

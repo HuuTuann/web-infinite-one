@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { Plus } from "lucide-react";
 
 import { Button, Stack } from "@/components";
@@ -5,7 +7,7 @@ import { DialogSize, DialogType, useDialog } from "@/hooks";
 
 import { AddEditWallet } from "../AddEditWallet";
 
-export const WalletToolbar = () => {
+export const WalletToolbar = memo(() => {
   const { showDialog } = useDialog();
 
   const handleAddWallet = () => {
@@ -24,4 +26,6 @@ export const WalletToolbar = () => {
       </Button>
     </Stack>
   );
-};
+});
+
+WalletToolbar.displayName = "WalletToolbar";
