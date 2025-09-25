@@ -1,12 +1,10 @@
 export const PREFIX = {
-  budgetExpense: "/budget-expense",
+  wallet: "/wallet",
 };
 export const PATHS = {
   root: "/",
   auth: "/auth",
-  budgetExpense: PREFIX.budgetExpense,
-  budgetExpenseDashboard: `${PREFIX.budgetExpense}/dashboard`,
-  budgetExpenseWallet: `${PREFIX.budgetExpense}/wallet`,
+  wallet: PREFIX.wallet,
 } as const;
 
 export type PathKey = keyof typeof PATHS;

@@ -1,21 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/navigation";
 
+import { Sidebar } from "@/frameworks-animate-ui/components/radix";
 import { PATHS } from "@/lib";
-
-import SidebarAnimate from "../../../ui/frameworks/animate-ui/components/radix/sidebar";
 
 export const SidebarHeader = () => {
   const router = useRouter();
 
   return (
-    <SidebarAnimate.Header>
+    <Sidebar.Header>
       <img
         src="/logo.svg"
         alt="Infinite One Logo"
         className="max-h-[52px] cursor-pointer"
-        onClick={() => router.push(`${PATHS.budgetExpenseDashboard}`)}
+        onClick={() => router.push(`${PATHS.wallet}`)}
       />
-    </SidebarAnimate.Header>
+    </Sidebar.Header>
   );
 };

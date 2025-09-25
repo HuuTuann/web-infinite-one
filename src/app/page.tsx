@@ -1,5 +1,5 @@
-import { HomeContainer } from "@/modules/home";
+import { Home } from "@/modules/home";
 
-export default function Home() {
-  return <HomeContainer />;
+export default function HomePage() {
+  return <Home />;
 }

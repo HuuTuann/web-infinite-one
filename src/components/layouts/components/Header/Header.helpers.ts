@@ -1,9 +1,7 @@
 import { PATHS } from "@/lib";
 
 const titleMap = {
-  [PATHS.budgetExpense]: "Budget & Expense",
-  [PATHS.budgetExpenseDashboard]: "Budget & Expense",
-  [PATHS.budgetExpenseWallet]: "Budget & Expense",
+  [PATHS.wallet]: "Wallet",
 } as const;
 
 export const HeaderHelpers = {

@@ -1,5 +1,5 @@
-import AuthContainer from "@/modules/auth";
+import { Auth } from "@/modules/auth";
 
-export default function Auth() {
-  return <AuthContainer />;
+export default function AuthPage() {
+  return <Auth />;
 }

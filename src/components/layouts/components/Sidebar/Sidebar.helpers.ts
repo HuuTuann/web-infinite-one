@@ -30,18 +30,9 @@ const sidebarGroups: SidebarGroup[] = [
     title: "Modules",
     menus: [
       {
-        title: "Budget & Expense",
+        title: "Wallet",
         icon: Wallet,
-        items: [
-          {
-            title: "Dashboard",
-            url: PATHS.budgetExpenseDashboard,
-          },
-          {
-            title: "Wallet",
-            url: PATHS.budgetExpenseWallet,
-          },
-        ],
+        url: PATHS.wallet,
       },
     ],
   },
