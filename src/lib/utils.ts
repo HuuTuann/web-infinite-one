@@ -23,19 +23,11 @@ export function isEmpty(value: unknown): boolean {
   );
 }
 
-export function formatCurrency(value: number): string {
+export function formatCurrency(value?: number): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-  }).format(value);
-}
-
-export function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  }).format(date);
+  }).format(value || 0);
 }
 
 export function convertToOptions(content?: Content[]): SelectOption[] {

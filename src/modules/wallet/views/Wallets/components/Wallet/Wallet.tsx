@@ -1,8 +1,10 @@
+import { useRouter } from "next/navigation";
+
 import { Clock, CreditCard, EllipsisVertical, Users } from "lucide-react";
 
-import { Button, Stack, Typography } from "@/components";
+import { Button, FormatValue, Stack, Typography } from "@/components";
 import { Badge } from "@/components/ui/frameworks/re-ui";
-import { formatCurrency, formatDate } from "@/lib";
+import { formatCurrency, PATHS } from "@/lib";
 import { GetWalletListResponse } from "@/modules/wallet/queries";
 
 type Props = {
@@ -10,7 +12,9 @@ type Props = {
 };
 
 export const Wallet = ({ wallet }: Props) => {
+  const router = useRouter();
   const {
+    id,
     name,
     role,
     baseCurrency,
@@ -48,13 +52,20 @@ export const Wallet = ({ wallet }: Props) => {
         </Stack>
       </Stack>
       <Stack direction="row" justify="between" align="center">
-        <Stack direction="row" align="center">
-          <Clock size={16} color="var(--muted-foreground)" />
-          <Typography.Muted>{`Updated ${formatDate(new Date(updatedAt))}`}</Typography.Muted>
-        </Stack>
+        <FormatValue.Date
+          value={updatedAt}
+          leftIcon={<Clock size={16} color="var(--muted-foreground)" />}
+          dateMonthStyle="long"
+          className="text-muted-foreground text-sm"
+        />
         <Typography.Large>{formatCurrency(totalBalances)}</Typography.Large>
       </Stack>
-      <Button className="mt-2 w-full">Open wallet</Button>
+      <Button
+        className="mt-2 w-full"
+        onClick={() => router.push(`${PATHS.walletDetail.replace(":id", id)}`)}
+      >
+        Open wallet
+      </Button>
     </Stack>
   );
 };

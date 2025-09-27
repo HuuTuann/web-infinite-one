@@ -58,7 +58,7 @@ export function Home() {
             <Button
               size="lg"
               className={commonButtonClassName}
-              onClick={() => router.push(PATHS.wallet)}
+              onClick={() => router.push(PATHS.wallets)}
             >
               View Projects
             </Button>

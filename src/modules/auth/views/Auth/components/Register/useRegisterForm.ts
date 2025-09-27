@@ -23,7 +23,7 @@ export const useRegisterForm = () => {
   const { onRegister, isPending } = useRegister({
     onSuccess: () => {
       onAuthRegister();
-      router.push(`${PATHS.wallet}`);
+      router.push(`${PATHS.wallets}`);
       Toastify.Success("Register successful");
     },
     onError: () => {

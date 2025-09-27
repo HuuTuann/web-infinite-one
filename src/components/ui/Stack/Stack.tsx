@@ -15,17 +15,19 @@ import {
   stackJustifyMap,
 } from "./Stack.helpers";
 
-type Props = Readonly<{
-  children: React.ReactNode;
-  className?: string;
-  gap?: StackGapValue;
-  align?: StackJustifyAlignValue;
-  justify?: StackJustifyAlignValue;
-  direction?: StackDirectionValue;
-}>;
+type Props = React.HTMLAttributes<HTMLDivElement> &
+  Readonly<{
+    children: React.ReactNode;
+    className?: string;
+    gap?: StackGapValue;
+    align?: StackJustifyAlignValue;
+    justify?: StackJustifyAlignValue;
+    direction?: StackDirectionValue;
+  }>;
 
 export const Stack = memo((props: Props) => {
-  const { children, className, gap, align, justify, direction } = props;
+  const { children, className, gap, align, justify, direction, ...restProps } =
+    props;
 
   const stackClassName = useMemo(() => {
     const stackDirection =
@@ -35,7 +37,7 @@ export const Stack = memo((props: Props) => {
     const stackGap = stackGapMap[gap ?? StackGap.SM];
 
     return cn(
-      "flex w-full",
+      "flex",
       stackDirection,
       stackJustify,
       stackAlign,
@@ -44,7 +46,11 @@ export const Stack = memo((props: Props) => {
     );
   }, [direction, justify, align, gap, className]);
 
-  return <div className={stackClassName}>{children}</div>;
+  return (
+    <div className={stackClassName} {...restProps}>
+      {children}
+    </div>
+  );
 });
 
 Stack.displayName = "Stack";

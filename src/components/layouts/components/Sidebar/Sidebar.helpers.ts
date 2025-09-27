@@ -32,7 +32,7 @@ const sidebarGroups: SidebarGroup[] = [
       {
         title: "Wallet",
         icon: Wallet,
-        url: PATHS.wallet,
+        url: PATHS.wallets,
       },
     ],
   },

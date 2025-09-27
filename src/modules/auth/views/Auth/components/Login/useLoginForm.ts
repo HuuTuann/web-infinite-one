@@ -23,7 +23,7 @@ export const useLoginForm = () => {
   const { isPending, onLogin } = useLogin({
     onSuccess: () => {
       onAuthLogin();
-      router.push(`${PATHS.wallet}`);
+      router.push(`${PATHS.wallets}`);
       Toastify.Success("Login successful");
     },
     onError: () => {

@@ -12,7 +12,7 @@ const typographyClassNameMap: Record<TypographyVariant, string> = {
   [TypographyVariant.H2]: "scroll-m-20 text-3xl font-semibold tracking-tight ",
   [TypographyVariant.H3]: "scroll-m-20 text-2xl font-semibold tracking-tight",
   [TypographyVariant.H4]: "scroll-m-20 text-xl font-semibold tracking-tight",
-  [TypographyVariant.P]: "leading-7 [&:not(:first-child)]:mt-6",
+  [TypographyVariant.P]: "leading-7",
 };
 
 type TypographyVariantValue = "h1" | "h2" | "h3" | "h4" | "p";

@@ -13,7 +13,7 @@ export const SidebarHeader = () => {
         src="/logo.svg"
         alt="Infinite One Logo"
         className="max-h-[52px] cursor-pointer"
-        onClick={() => router.push(`${PATHS.wallet}`)}
+        onClick={() => router.push(`${PATHS.wallets}`)}
       />
     </Sidebar.Header>
   );

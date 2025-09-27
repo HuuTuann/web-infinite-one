@@ -11,7 +11,7 @@ type Props = {
   redirectTo?: string;
 };
 
-export const AuthGuard = ({ children, redirectTo = PATHS.wallet }: Props) => {
+export const AuthGuard = ({ children, redirectTo = PATHS.wallets }: Props) => {
   const router = useRouter();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 

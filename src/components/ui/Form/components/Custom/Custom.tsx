@@ -33,7 +33,7 @@ export const Custom = <T extends FieldValues>(props: Props<T>) => {
         <FormShadcn.Item>
           <FormShadcn.Label className="flex items-center">
             {leftLabelSection}
-            <Stack direction="row" className="gap-0.5">
+            <Stack direction="row" className="w-full gap-0.5">
               {label}
               {required && <span className="font-bold text-red-500">*</span>}
             </Stack>

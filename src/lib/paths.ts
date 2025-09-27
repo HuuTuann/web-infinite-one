@@ -4,7 +4,8 @@ export const PREFIX = {
 export const PATHS = {
   root: "/",
   auth: "/auth",
-  wallet: PREFIX.wallet,
+  wallets: `${PREFIX.wallet}s`,
+  walletDetail: `${PREFIX.wallet}/:id`,
 } as const;
 
 export type PathKey = keyof typeof PATHS;

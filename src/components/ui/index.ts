@@ -1,7 +1,9 @@
+export * from "./Badge";
 export * from "./Button";
 export * from "./Card";
 export * from "./Dialog";
 export * from "./Form";
+export * from "./FormatValue";
 export * from "./Grid";
 export * from "./Input";
 export * from "./Label";
@@ -13,3 +15,4 @@ export * from "./Tabs";
 export * from "./Toastify";
 export * from "./Tooltip";
 export * from "./Typography";
+export * from "./View";

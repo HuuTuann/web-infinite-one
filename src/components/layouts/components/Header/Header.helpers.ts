@@ -1,7 +1,8 @@
 import { PATHS } from "@/lib";
 
 const titleMap = {
-  [PATHS.wallet]: "Wallet",
+  [PATHS.wallets]: "Wallets",
+  [PATHS.walletDetail]: "Wallet Detail",
 } as const;
 
 export const HeaderHelpers = {

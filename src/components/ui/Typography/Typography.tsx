@@ -13,7 +13,7 @@ import { TypographyList, TypographyListItem } from "./Typography.List";
 import { TypographyMuted } from "./Typography.Muted";
 import { TypographySmall } from "./Typography.Small";
 
-type Props = {
+type Props = React.HTMLAttributes<HTMLParagraphElement> & {
   children: React.ReactNode;
   variant?: TypographyVariantValue;
   className?: string;
