@@ -14,7 +14,9 @@ export const Header = () => {
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between gap-2 border-b p-4">
-      <Typography variant="h1">{HeaderHelpers.titleMap[pathname]}</Typography>
+      <Typography variant="h1">
+        {HeaderHelpers.getTitleFromPathname(pathname)}
+      </Typography>
 
       <Button
         variant="outline"

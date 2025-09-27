@@ -7,6 +7,7 @@ import { isEmpty, PathKey, PATHS } from "@/lib";
 type SidebarMenu = {
   title: string;
   url?: string;
+  urlActives: string[];
   isActive?: boolean;
   icon: ForwardRefExoticComponent<
     Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
@@ -17,6 +18,7 @@ type SidebarMenu = {
 type SidebarMenuItem = {
   title: string;
   url: string;
+  urlActives: string[];
   isActive?: boolean;
 };
 
@@ -33,10 +35,17 @@ const sidebarGroups: SidebarGroup[] = [
         title: "Wallet",
         icon: Wallet,
         url: PATHS.wallets,
+        urlActives: [PATHS.wallets, PATHS.walletDetail.replace(":id", "")],
       },
     ],
   },
 ];
+
+const isUrlActive = (pathname: PathKey, urlActives: string[]): boolean => {
+  if (isEmpty(urlActives)) return false;
+
+  return urlActives.some((u) => pathname.startsWith(u));
+};
 
 const getSidebarGroupsActive = (pathname: PathKey): SidebarGroup[] => {
   return sidebarGroups.map((group) => {
@@ -45,18 +54,17 @@ const getSidebarGroupsActive = (pathname: PathKey): SidebarGroup[] => {
     return {
       ...group,
       menus: menus.map((menu) => {
-        const { url, items } = menu;
+        const { urlActives, items } = menu;
         const isEmptyItems = isEmpty(items);
 
         return {
           ...menu,
-          isActive: url === pathname && isEmptyItems,
+          isActive: isUrlActive(pathname, urlActives) && isEmptyItems,
           ...(!isEmptyItems && {
             items: items?.map((item) => {
-              const { url } = item;
               return {
                 ...item,
-                isActive: url === pathname,
+                isActive: isUrlActive(pathname, urlActives),
               };
             }),
           }),

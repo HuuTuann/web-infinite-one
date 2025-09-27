@@ -3,10 +3,9 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { ChevronRight } from "lucide-react";
 
+import { Sidebar } from "@/frameworks-animate-ui/components/radix";
+import { CollapsiblePrimitive } from "@/frameworks-animate-ui/primitives/radix";
 import { isEmpty, PathKey } from "@/lib";
-
-import SidebarAnimate from "../../../ui/frameworks/animate-ui/components/radix/sidebar";
-import Collapsible from "../../../ui/frameworks/animate-ui/primitives/radix/collapsible";
 
 import SidebarHelpers, { type SidebarMenu } from "./Sidebar.helpers";
 
@@ -19,12 +18,16 @@ const SidebarMenu = ({ sidebarMenus }: SidebarMenuProps) => {
   const pathname = usePathname();
 
   const onNavigate = useCallback(
-    (url: string) => pathname !== url && router.push(url),
+    (url?: string) => {
+      if (!url || pathname.startsWith(url)) return;
+
+      router.push(url);
+    },
     [router, pathname]
   );
 
   return (
-    <SidebarAnimate.Menu>
+    <Sidebar.Menu>
       {sidebarMenus.map(
         ({ title, url, icon: IconComponent, items, isActive }, index) => {
           const isOpen = items?.some((item) => item.isActive);
@@ -35,55 +38,55 @@ const SidebarMenu = ({ sidebarMenus }: SidebarMenuProps) => {
 
           if (isEmptyUrl && !isEmptyItems)
             return (
-              <Collapsible
+              <CollapsiblePrimitive
                 key={index}
                 asChild
                 defaultOpen={isOpen}
                 className="group/collapsible"
               >
-                <SidebarAnimate.MenuItem>
-                  <Collapsible.Trigger asChild>
-                    <SidebarAnimate.MenuButton tooltip={title}>
+                <Sidebar.MenuItem>
+                  <CollapsiblePrimitive.Trigger asChild>
+                    <Sidebar.MenuButton tooltip={title}>
                       <IconComponent />
                       <span>{title}</span>
                       <ChevronRight className="ml-auto transition-transform duration-300 group-data-[state=open]/collapsible:rotate-90" />
-                    </SidebarAnimate.MenuButton>
-                  </Collapsible.Trigger>
-                  <Collapsible.Content>
-                    <SidebarAnimate.MenuSub>
+                    </Sidebar.MenuButton>
+                  </CollapsiblePrimitive.Trigger>
+                  <CollapsiblePrimitive.Content>
+                    <Sidebar.MenuSub>
                       {items?.map(({ title, url, isActive }, index) => (
-                        <SidebarAnimate.MenuSubItem key={index}>
-                          <SidebarAnimate.MenuSubButton
+                        <Sidebar.MenuSubItem key={index}>
+                          <Sidebar.MenuSubButton
                             asChild
                             isActive={isActive}
                             className="cursor-pointer"
                           >
                             <p onClick={() => onNavigate(url)}>{title}</p>
-                          </SidebarAnimate.MenuSubButton>
-                        </SidebarAnimate.MenuSubItem>
+                          </Sidebar.MenuSubButton>
+                        </Sidebar.MenuSubItem>
                       ))}
-                    </SidebarAnimate.MenuSub>
-                  </Collapsible.Content>
-                </SidebarAnimate.MenuItem>
-              </Collapsible>
+                    </Sidebar.MenuSub>
+                  </CollapsiblePrimitive.Content>
+                </Sidebar.MenuItem>
+              </CollapsiblePrimitive>
             );
 
           if (!isEmptyUrl && isEmptyItems)
             return (
-              <SidebarAnimate.MenuItem key={index}>
-                <SidebarAnimate.MenuButton asChild isActive={isActive}>
-                  <p className="cursor-pointer">
+              <Sidebar.MenuItem key={index}>
+                <Sidebar.MenuButton asChild isActive={isActive}>
+                  <p className="cursor-pointer" onClick={() => onNavigate(url)}>
                     <IconComponent />
                     {title}
                   </p>
-                </SidebarAnimate.MenuButton>
-              </SidebarAnimate.MenuItem>
+                </Sidebar.MenuButton>
+              </Sidebar.MenuItem>
             );
 
           return null;
         }
       )}
-    </SidebarAnimate.Menu>
+    </Sidebar.Menu>
   );
 };
 
@@ -92,17 +95,15 @@ export const SidebarContent = () => {
   const sidebarGroupsActive = SidebarHelpers.getSidebarGroupsActive(pathname);
 
   return (
-    <SidebarAnimate.Content>
-      <SidebarAnimate.Group>
+    <Sidebar.Content>
+      <Sidebar.Group>
         {sidebarGroupsActive.map(({ title, menus }, index) => (
           <Fragment key={index}>
-            <SidebarAnimate.GroupLabel key={index}>
-              {title}
-            </SidebarAnimate.GroupLabel>
+            <Sidebar.GroupLabel key={index}>{title}</Sidebar.GroupLabel>
             <SidebarMenu sidebarMenus={menus} />
           </Fragment>
         ))}
-      </SidebarAnimate.Group>
-    </SidebarAnimate.Content>
+      </Sidebar.Group>
+    </Sidebar.Content>
   );
 };
