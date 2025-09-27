@@ -9,6 +9,7 @@ enum WalletKeys {
   ROLE = "role",
   INVITED_MEMBERS = "invitedMembers",
   UPDATED_AT = "updatedAt",
+  CREATED_AT = "createdAt",
 }
 
 enum InvitedMembersKeys {

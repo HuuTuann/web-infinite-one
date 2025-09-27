@@ -9,6 +9,7 @@ type GetWalletListResponse = {
   [WalletKeys.TOTAL_BALANCES]: number;
   [WalletKeys.ROLE]: string;
   [WalletKeys.UPDATED_AT]: string;
+  [WalletKeys.CREATED_AT]: string;
 };
 
 export type { GetWalletListResponse };

@@ -12,9 +12,14 @@ const getWallets = () => {
   return httpsService.get(`${BASE_PATH}`);
 };
 
+const getWalletGeneral = (id: string) => {
+  return httpsService.get(`${BASE_PATH}/${id}/general`);
+};
+
 const WalletApis = {
   create: createWallet,
-  get: getWallets,
+  gets: getWallets,
+  getGeneral: getWalletGeneral,
 };
 
 export default WalletApis;

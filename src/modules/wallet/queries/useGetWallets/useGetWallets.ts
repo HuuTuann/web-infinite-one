@@ -14,7 +14,7 @@ export const useGetWallets = () => {
     ApiResponse<GetWalletListResponse[]>
   >({
     queryKey: [WalletQueryKeys.GET_WALLETS],
-    queryFn: apiCall<ApiResponse<GetWalletListResponse[]>>(WalletApis.get),
+    queryFn: apiCall<ApiResponse<GetWalletListResponse[]>>(WalletApis.gets),
   });
 
   const { data: wallets = [] } = data || {};
