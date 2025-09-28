@@ -9,6 +9,7 @@ import axios, {
   InternalAxiosRequestConfig,
 } from "axios";
 
+import { PATHS } from "@/lib";
 import { useAuthStore } from "@/stores";
 
 const REFRESH_PATH = "/auth/refresh";
@@ -58,11 +59,17 @@ httpsService.interceptors.response.use(
 
     if (!cfg) throw error;
 
-    const logout = useAuthStore((s) => s.logout);
+    const handleLogout = () => {
+      const logout = useAuthStore.getState().logout;
+      logout();
+      if (typeof window !== "undefined") {
+        window.location.href = PATHS.auth;
+      }
+    };
     const isRefreshReq = getPath(cfg.url).endsWith(REFRESH_PATH);
 
     if (isRefreshReq) {
-      logout();
+      handleLogout();
 
       throw error;
     }
@@ -74,10 +81,10 @@ httpsService.interceptors.response.use(
         cfg._retry = true;
         await refreshOnce();
         return api(cfg);
-      } catch {
-        logout();
+      } catch (refreshError) {
+        handleLogout();
 
-        throw error;
+        throw refreshError;
       }
     }
 
