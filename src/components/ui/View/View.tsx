@@ -29,7 +29,7 @@ export const View = (props: ViewProps) => {
     <Stack direction="row" align="center" className={className}>
       {leftIcon}
       {label && (
-        <Typography.Muted className={cn("font-medium", labelClassName)}>
+        <Typography.Muted className={cn("font-normal", labelClassName)}>
           {label}
         </Typography.Muted>
       )}
