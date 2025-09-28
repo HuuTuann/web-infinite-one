@@ -9,6 +9,8 @@ import axios, {
   InternalAxiosRequestConfig,
 } from "axios";
 
+import { useAuthStore } from "@/stores";
+
 const REFRESH_PATH = "/auth/refresh";
 
 function getPath(url?: string) {
@@ -56,8 +58,14 @@ httpsService.interceptors.response.use(
 
     if (!cfg) throw error;
 
+    const logout = useAuthStore((s) => s.logout);
     const isRefreshReq = getPath(cfg.url).endsWith(REFRESH_PATH);
-    if (isRefreshReq) throw error;
+
+    if (isRefreshReq) {
+      logout();
+
+      throw error;
+    }
 
     const isAuthExpired = status === 401 || status === 419;
 
@@ -67,6 +75,8 @@ httpsService.interceptors.response.use(
         await refreshOnce();
         return api(cfg);
       } catch {
+        logout();
+
         throw error;
       }
     }
