@@ -12,11 +12,15 @@ import {
   Typography,
   View,
 } from "@/components";
+import { DialogType, useDialog } from "@/hooks";
 import { formatCurrency } from "@/lib";
 import { useGetWalletGeneral } from "@/modules/wallet/queries";
 
+import { AddEditAccount } from "../Overview";
+
 export const General = memo(() => {
   const { id } = useParams<{ id: string }>();
+  const { showDialog } = useDialog();
 
   const { walletGeneral } = useGetWalletGeneral({ id });
   const {
@@ -29,6 +33,14 @@ export const General = memo(() => {
     updatedAt,
     createdAt,
   } = walletGeneral || {};
+
+  const handleAddAccount = () => {
+    showDialog({
+      title: "Add Account",
+      type: DialogType.CONTENT,
+      content: <AddEditAccount walletId={id} />,
+    });
+  };
 
   return (
     <Card>
@@ -54,7 +66,7 @@ export const General = memo(() => {
 
           <Stack direction="row">
             <Button disabled>Invite Members</Button>
-            <Button disabled>New Account</Button>
+            <Button onClick={handleAddAccount}>New Account</Button>
           </Stack>
         </Stack>
 

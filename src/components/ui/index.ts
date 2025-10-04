@@ -11,6 +11,7 @@ export * from "./Loading";
 export * from "./Scroll";
 export * from "./Select";
 export * from "./Stack";
+export * from "./Table";
 export * from "./Tabs";
 export * from "./Toastify";
 export * from "./Tooltip";

@@ -19,4 +19,20 @@ enum InvitedMembersKeys {
   ROLE = "role",
 }
 
-export { InvitedMembersKeys, WalletKeys };
+enum AccountsKeys {
+  ID = "id",
+  WALLET_ID = "walletId",
+  NAME = "name",
+  CURRENCY = "currency",
+  CURRENCY_ID = "currencyId",
+  OPENING_BALANCE = "openingBalance",
+  CURRENT_BALANCE = "currentBalance",
+  TOTAL_TRANSACTIONS = "totalTransactions",
+  IS_ACTIVE = "isActive",
+  IS_DELETED = "isDeleted",
+  DELETED_AT = "deletedAt",
+  CREATED_AT = "createdAt",
+  UPDATED_AT = "updatedAt",
+}
+
+export { AccountsKeys, InvitedMembersKeys, WalletKeys };

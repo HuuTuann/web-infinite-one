@@ -38,3 +38,12 @@ export function convertToOptions(content?: Content[]): SelectOption[] {
     value: id,
   }));
 }
+
+export function stringifyQueryParams(params: {
+  [key: string]: string | number | boolean | undefined;
+}) {
+  return Object.keys(params)
+    .filter((key) => !isEmpty(params[key]))
+    .map((key) => `${key}=${params[key]}`)
+    .join("&");
+}
